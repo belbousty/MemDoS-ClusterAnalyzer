@@ -1,7 +1,0 @@
-nodes:
-  - name: node1
-    memory: 32000
-    cpus: 2
-  - name: node2
-    memory: 32000
-    cpus: 2
