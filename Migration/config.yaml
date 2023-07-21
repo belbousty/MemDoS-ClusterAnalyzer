@@ -1,0 +1,96 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-0
+spec:
+  nodeName: minikube
+  containers:
+  - name: docker-container
+    image: docker.io/ubuntu
+    command: [ "/bin/bash", "-c", "--" ]
+    args: [ "while true; do sleep 30; done;" ]
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hibench-pod-0
+spec:
+  nodeName: minikube
+  containers:
+  - name: hibench-pod
+    image: docker.io/hibench:0.0.1
+    command: ["/bin/sh"]
+    args: ["-c", "service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep 30; done;"]
+    imagePullPolicy: IfNotPresent
+    resources:
+      limits:
+        memory: "32000Mi"
+        cpu: "2000m"
+      requests:
+        memory: "4000Mi"
+        cpu: "800m"
+
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: pod-1
+# spec:
+#   nodeName: minikube-m02
+#   containers:
+#   - name: docker-container
+#     image: ubuntu
+#     command: [ "/bin/bash", "-c", "--" ]
+#     args: [ "while true; do sleep 30; done;" ]
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: hibench-pod-1
+# spec:
+#   nodeName: minikube-m02
+#   containers:
+#   - name: hibench-pod
+#     image: localhost:5000/hibench:0.0.1
+#     command: ["/bin/sh"]
+#     args: ["-c", "service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep 30; done;"]
+#     imagePullPolicy: Never
+#     resources:
+#       limits:
+#         memory: "32000Mi"
+#         cpu: "2000m"
+#       requests:
+#         memory: "4000Mi"
+#         cpu: "800m"
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: pod-2
+# spec:
+#   nodeName: minikube-m03
+#   containers:
+#   - name: docker-container
+#     image: ubuntu
+#     command: [ "/bin/bash", "-c", "--" ]
+#     args: [ "while true; do sleep 30; done;" ]
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: hibench-pod-2
+# spec:
+#   nodeName: minikube-m03
+#   containers:
+#   - name: hibench-pod
+#     image: docker.io/library/hibench:0.0.1
+#     command: ["/bin/sh"]
+#     args: ["-c", "service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep 30; done;"]
+#     imagePullPolicy: Never
+#     resources:
+#       limits:
+#         memory: "32000Mi"
+#         cpu: "2000m"
+#       requests:
+#         memory: "4000Mi"
+#         cpu: "800m"

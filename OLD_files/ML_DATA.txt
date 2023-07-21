@@ -1,0 +1,935 @@
+Time taken for this batch:  0.030050992965698242 seconds
+
+Time taken for this batch:  0.036194562911987305 seconds
+
+Time taken for this batch:  0.026512622833251953 seconds
+
+Time taken for this batch:  0.025884389877319336 seconds
+
+Time taken for this batch:  0.02768421173095703 seconds
+
+Time taken for this batch:  0.027390241622924805 seconds
+
+Time taken for this batch:  0.02786564826965332 seconds
+
+Time taken for this batch:  0.02644205093383789 seconds
+
+Time taken for this batch:  0.02686333656311035 seconds
+
+Time taken for this batch:  0.03237462043762207 seconds
+
+Time taken for this batch:  0.028125762939453125 seconds
+
+Time taken for this batch:  0.02698659896850586 seconds
+
+Time taken for this batch:  0.027054309844970703 seconds
+
+Time taken for this batch:  0.026107311248779297 seconds
+
+Time taken for this batch:  0.026719331741333008 seconds
+
+Time taken for this batch:  0.027068614959716797 seconds
+
+Time taken for this batch:  0.02809429168701172 seconds
+
+Time taken for this batch:  0.027887582778930664 seconds
+
+Time taken for this batch:  0.030519485473632812 seconds
+
+Time taken for this batch:  0.030325889587402344 seconds
+
+Time taken for this batch:  0.027556657791137695 seconds
+
+Time taken for this batch:  0.028664112091064453 seconds
+
+Time taken for this batch:  0.02731180191040039 seconds
+
+Time taken for this batch:  0.026427745819091797 seconds
+
+Time taken for this batch:  0.02868056297302246 seconds
+
+Time taken for this batch:  0.027335166931152344 seconds
+
+Time taken for this batch:  0.18126153945922852 seconds
+
+Time taken for this batch:  0.6148808002471924 seconds
+
+Time taken for this batch:  0.6651313304901123 seconds
+
+Time taken for this batch:  0.8468384742736816 seconds
+
+Time taken for this batch:  0.670569896697998 seconds
+
+Time taken for this batch:  0.6075701713562012 seconds
+
+Time taken for this batch:  0.7212808132171631 seconds
+
+Time taken for this batch:  0.7790191173553467 seconds
+
+Time taken for this batch:  0.5291032791137695 seconds
+
+Time taken for this batch:  0.5202982425689697 seconds
+
+Time taken for this batch:  0.663815975189209 seconds
+
+Time taken for this batch:  0.5910904407501221 seconds
+
+Time taken for this batch:  0.6659512519836426 seconds
+
+Time taken for this batch:  0.8893053531646729 seconds
+
+Time taken for this batch:  0.8674297332763672 seconds
+
+Time taken for this batch:  1.0930216312408447 seconds
+
+Time taken for this batch:  0.6730368137359619 seconds
+
+Time taken for this batch:  0.6904013156890869 seconds
+
+Time taken for this batch:  0.5114302635192871 seconds
+
+Time taken for this batch:  0.8949563503265381 seconds
+
+Time taken for this batch:  0.39826250076293945 seconds
+
+Time taken for this batch:  0.7470052242279053 seconds
+
+Time taken for this batch:  0.9652533531188965 seconds
+
+Time taken for this batch:  0.9782366752624512 seconds
+
+Time taken for this batch:  0.9509828090667725 seconds
+
+Time taken for this batch:  0.5978467464447021 seconds
+
+Time taken for this batch:  0.8079257011413574 seconds
+
+Time taken for this batch:  0.5396313667297363 seconds
+
+Time taken for this batch:  0.9698128700256348 seconds
+
+Time taken for this batch:  0.6870064735412598 seconds
+
+Time taken for this batch:  0.9316954612731934 seconds
+
+Time taken for this batch:  0.7676248550415039 seconds
+
+Time taken for this batch:  0.7132573127746582 seconds
+
+Time taken for this batch:  0.8135945796966553 seconds
+
+Time taken for this batch:  0.8277618885040283 seconds
+
+Time taken for this batch:  0.9751722812652588 seconds
+
+Time taken for this batch:  0.6097064018249512 seconds
+
+Time taken for this batch:  0.7196722030639648 seconds
+
+Time taken for this batch:  0.5694031715393066 seconds
+
+Time taken for this batch:  0.6467905044555664 seconds
+
+Time taken for this batch:  0.8828563690185547 seconds
+
+Time taken for this batch:  0.6503369808197021 seconds
+
+Time taken for this batch:  0.7746329307556152 seconds
+
+Time taken for this batch:  0.7581336498260498 seconds
+
+Time taken for this batch:  0.7305905818939209 seconds
+
+Time taken for this batch:  0.5894360542297363 seconds
+
+Time taken for this batch:  0.5642063617706299 seconds
+
+Time taken for this batch:  0.8676290512084961 seconds
+
+Time taken for this batch:  0.5754108428955078 seconds
+
+Time taken for this batch:  0.5187053680419922 seconds
+
+Time taken for this batch:  0.4305884838104248 seconds
+
+Time taken for this batch:  0.3636775016784668 seconds
+
+Time taken for this batch:  0.552147388458252 seconds
+
+Time taken for this batch:  0.7904257774353027 seconds
+
+Time taken for this batch:  0.6477644443511963 seconds
+
+Time taken for this batch:  0.5372674465179443 seconds
+
+Time taken for this batch:  0.6787874698638916 seconds
+
+Time taken for this batch:  0.7776875495910645 seconds
+
+Time taken for this batch:  0.6142399311065674 seconds
+
+Time taken for this batch:  0.8497958183288574 seconds
+
+Time taken for this batch:  0.9000887870788574 seconds
+
+Time taken for this batch:  0.6965794563293457 seconds
+
+Time taken for this batch:  1.0047826766967773 seconds
+
+Time taken for this batch:  0.5410571098327637 seconds
+
+Time taken for this batch:  0.6374590396881104 seconds
+
+Time taken for this batch:  0.98551344871521 seconds
+
+Time taken for this batch:  0.6883814334869385 seconds
+
+Time taken for this batch:  1.27020263671875 seconds
+
+Time taken for this batch:  0.6322066783905029 seconds
+
+Time taken for this batch:  0.6346323490142822 seconds
+
+Time taken for this batch:  0.7375054359436035 seconds
+
+Time taken for this batch:  0.5907285213470459 seconds
+
+Time taken for this batch:  0.46577954292297363 seconds
+
+Time taken for this batch:  0.8066778182983398 seconds
+
+Time taken for this batch:  0.9670350551605225 seconds
+
+Time taken for this batch:  0.8204319477081299 seconds
+
+Time taken for this batch:  0.7107021808624268 seconds
+
+Time taken for this batch:  0.7573974132537842 seconds
+
+Time taken for this batch:  0.6535117626190186 seconds
+
+Time taken for this batch:  0.7118830680847168 seconds
+
+Time taken for this batch:  0.7192108631134033 seconds
+
+Time taken for this batch:  0.9186322689056396 seconds
+
+Time taken for this batch:  0.5006594657897949 seconds
+
+Time taken for this batch:  0.5717403888702393 seconds
+
+Time taken for this batch:  0.5454668998718262 seconds
+
+Time taken for this batch:  0.8024718761444092 seconds
+
+Time taken for this batch:  0.721343994140625 seconds
+
+Time taken for this batch:  0.9559850692749023 seconds
+
+Time taken for this batch:  0.7814896106719971 seconds
+
+Time taken for this batch:  0.5020179748535156 seconds
+
+Time taken for this batch:  0.1921548843383789 seconds
+
+Time taken for this batch:  0.27951788902282715 seconds
+
+Time taken for this batch:  0.7012498378753662 seconds
+
+Time taken for this batch:  0.4361717700958252 seconds
+
+Time taken for this batch:  0.6671755313873291 seconds
+
+Time taken for this batch:  0.6294004917144775 seconds
+
+Time taken for this batch:  0.5173561573028564 seconds
+
+Time taken for this batch:  0.44023680686950684 seconds
+
+Time taken for this batch:  0.71427321434021 seconds
+
+Time taken for this batch:  0.6217491626739502 seconds
+
+Time taken for this batch:  0.632943868637085 seconds
+
+Time taken for this batch:  0.48139214515686035 seconds
+
+Time taken for this batch:  0.5109310150146484 seconds
+
+Time taken for this batch:  0.6922397613525391 seconds
+
+Time taken for this batch:  0.6244714260101318 seconds
+
+Time taken for this batch:  0.7953586578369141 seconds
+
+Time taken for this batch:  0.4692091941833496 seconds
+
+Time taken for this batch:  0.7008824348449707 seconds
+
+Time taken for this batch:  0.5650367736816406 seconds
+
+Time taken for this batch:  0.6818869113922119 seconds
+
+Time taken for this batch:  0.5663275718688965 seconds
+
+Time taken for this batch:  0.5980076789855957 seconds
+
+Time taken for this batch:  0.7247135639190674 seconds
+
+Time taken for this batch:  0.6384432315826416 seconds
+
+Time taken for this batch:  0.8920235633850098 seconds
+
+Time taken for this batch:  0.41585588455200195 seconds
+
+Time taken for this batch:  0.7135956287384033 seconds
+
+Time taken for this batch:  0.5098602771759033 seconds
+
+Time taken for this batch:  0.492107629776001 seconds
+
+Time taken for this batch:  0.5405130386352539 seconds
+
+Time taken for this batch:  0.5750753879547119 seconds
+
+Time taken for this batch:  0.8882796764373779 seconds
+
+Time taken for this batch:  0.7091991901397705 seconds
+
+Time taken for this batch:  0.6525747776031494 seconds
+
+Time taken for this batch:  0.928734540939331 seconds
+
+Time taken for this batch:  0.761235237121582 seconds
+
+Time taken for this batch:  0.5639731884002686 seconds
+
+Time taken for this batch:  0.6464018821716309 seconds
+
+Time taken for this batch:  0.6427774429321289 seconds
+
+Time taken for this batch:  0.6855010986328125 seconds
+
+Time taken for this batch:  0.7201659679412842 seconds
+
+Time taken for this batch:  0.668755292892456 seconds
+
+Time taken for this batch:  1.02946138381958 seconds
+
+Time taken for this batch:  0.8951373100280762 seconds
+
+Time taken for this batch:  0.8207709789276123 seconds
+
+Time taken for this batch:  0.7600646018981934 seconds
+
+Time taken for this batch:  0.6311359405517578 seconds
+
+Time taken for this batch:  0.8064684867858887 seconds
+
+Time taken for this batch:  0.7587940692901611 seconds
+
+Time taken for this batch:  0.6046509742736816 seconds
+
+Time taken for this batch:  0.7109968662261963 seconds
+
+Time taken for this batch:  0.7843525409698486 seconds
+
+Time taken for this batch:  0.6967077255249023 seconds
+
+Time taken for this batch:  0.8671424388885498 seconds
+
+Time taken for this batch:  0.6679527759552002 seconds
+
+Time taken for this batch:  0.7402117252349854 seconds
+
+Time taken for this batch:  0.6915037631988525 seconds
+
+Time taken for this batch:  0.8071627616882324 seconds
+
+Time taken for this batch:  0.5939061641693115 seconds
+
+Time taken for this batch:  0.6145105361938477 seconds
+
+Time taken for this batch:  0.8976240158081055 seconds
+
+Time taken for this batch:  0.6479754447937012 seconds
+
+Time taken for this batch:  0.59206223487854 seconds
+
+Time taken for this batch:  0.6872711181640625 seconds
+
+Time taken for this batch:  0.814511775970459 seconds
+
+Time taken for this batch:  0.7746491432189941 seconds
+
+Time taken for this batch:  0.895073652267456 seconds
+
+Time taken for this batch:  0.6908137798309326 seconds
+
+Time taken for this batch:  0.6445255279541016 seconds
+
+Time taken for this batch:  0.6760094165802002 seconds
+
+Time taken for this batch:  0.7756845951080322 seconds
+
+Time taken for this batch:  0.8680698871612549 seconds
+
+Time taken for this batch:  0.9177377223968506 seconds
+
+Time taken for this batch:  0.911797046661377 seconds
+
+Time taken for this batch:  0.8312492370605469 seconds
+
+Time taken for this batch:  0.5758333206176758 seconds
+
+Time taken for this batch:  0.555488109588623 seconds
+
+Time taken for this batch:  1.0199153423309326 seconds
+
+Time taken for this batch:  0.8106324672698975 seconds
+
+Time taken for this batch:  0.5931813716888428 seconds
+
+Time taken for this batch:  0.5677564144134521 seconds
+
+Time taken for this batch:  0.54412841796875 seconds
+
+Time taken for this batch:  0.862579345703125 seconds
+
+Time taken for this batch:  0.6340246200561523 seconds
+
+Time taken for this batch:  0.9213929176330566 seconds
+
+Time taken for this batch:  0.6787254810333252 seconds
+
+Time taken for this batch:  0.7321350574493408 seconds
+
+Time taken for this batch:  0.6137166023254395 seconds
+
+Time taken for this batch:  0.7617764472961426 seconds
+
+Time taken for this batch:  0.5493385791778564 seconds
+
+Time taken for this batch:  0.896754264831543 seconds
+
+Time taken for this batch:  0.5362682342529297 seconds
+
+Time taken for this batch:  0.7818567752838135 seconds
+
+Time taken for this batch:  0.6117217540740967 seconds
+
+Time taken for this batch:  0.515000581741333 seconds
+
+Time taken for this batch:  0.8578596115112305 seconds
+
+Time taken for this batch:  0.6817500591278076 seconds
+
+Time taken for this batch:  0.5460159778594971 seconds
+
+Time taken for this batch:  0.568603515625 seconds
+
+Time taken for this batch:  0.5919656753540039 seconds
+
+Time taken for this batch:  0.8260252475738525 seconds
+
+Time taken for this batch:  0.6905081272125244 seconds
+
+Time taken for this batch:  0.9335317611694336 seconds
+
+Time taken for this batch:  0.6925804615020752 seconds
+
+Time taken for this batch:  0.5927402973175049 seconds
+
+Time taken for this batch:  0.738274335861206 seconds
+
+Time taken for this batch:  0.5556294918060303 seconds
+
+Time taken for this batch:  0.5181457996368408 seconds
+
+Time taken for this batch:  0.3237738609313965 seconds
+
+Time taken for this batch:  0.5902650356292725 seconds
+
+Time taken for this batch:  0.4910895824432373 seconds
+
+Time taken for this batch:  0.5348153114318848 seconds
+
+Time taken for this batch:  0.7274022102355957 seconds
+
+Time taken for this batch:  0.5831749439239502 seconds
+
+Time taken for this batch:  0.42098236083984375 seconds
+
+Time taken for this batch:  0.3855304718017578 seconds
+
+Time taken for this batch:  0.44500207901000977 seconds
+
+Time taken for this batch:  0.37356114387512207 seconds
+
+Time taken for this batch:  0.6092824935913086 seconds
+
+Time taken for this batch:  0.7052133083343506 seconds
+
+Time taken for this batch:  0.5366475582122803 seconds
+
+Time taken for this batch:  0.5149147510528564 seconds
+
+Time taken for this batch:  0.4871032238006592 seconds
+
+Time taken for this batch:  0.5621161460876465 seconds
+
+Time taken for this batch:  0.7947728633880615 seconds
+
+Time taken for this batch:  0.503983736038208 seconds
+
+Time taken for this batch:  0.7948696613311768 seconds
+
+Time taken for this batch:  0.7305779457092285 seconds
+
+Time taken for this batch:  0.6935248374938965 seconds
+
+Time taken for this batch:  0.6404106616973877 seconds
+
+Time taken for this batch:  0.7360391616821289 seconds
+
+Time taken for this batch:  0.6819601058959961 seconds
+
+Time taken for this batch:  0.4583432674407959 seconds
+
+Time taken for this batch:  0.757763147354126 seconds
+
+Time taken for this batch:  0.5591065883636475 seconds
+
+Time taken for this batch:  0.5254449844360352 seconds
+
+Time taken for this batch:  0.554767370223999 seconds
+
+Time taken for this batch:  0.6954152584075928 seconds
+
+Time taken for this batch:  0.5073666572570801 seconds
+
+Time taken for this batch:  0.8333818912506104 seconds
+
+Time taken for this batch:  0.5097787380218506 seconds
+
+Time taken for this batch:  0.7801303863525391 seconds
+
+Time taken for this batch:  0.49791646003723145 seconds
+
+Time taken for this batch:  0.4093787670135498 seconds
+
+Time taken for this batch:  0.649263858795166 seconds
+
+Time taken for this batch:  0.5631842613220215 seconds
+
+Time taken for this batch:  0.6466760635375977 seconds
+
+Time taken for this batch:  0.38341784477233887 seconds
+
+Time taken for this batch:  0.6219933032989502 seconds
+
+Time taken for this batch:  0.6198306083679199 seconds
+
+Time taken for this batch:  0.6588671207427979 seconds
+
+Time taken for this batch:  0.5958778858184814 seconds
+
+Time taken for this batch:  0.613508939743042 seconds
+
+Time taken for this batch:  0.7225127220153809 seconds
+
+Time taken for this batch:  0.732424259185791 seconds
+
+Time taken for this batch:  0.7833397388458252 seconds
+
+Time taken for this batch:  0.5459475517272949 seconds
+
+Time taken for this batch:  0.5388059616088867 seconds
+
+Time taken for this batch:  0.4624602794647217 seconds
+
+Time taken for this batch:  0.4451286792755127 seconds
+
+Time taken for this batch:  0.685462474822998 seconds
+
+Time taken for this batch:  0.565786600112915 seconds
+
+Time taken for this batch:  0.7087280750274658 seconds
+
+Time taken for this batch:  0.7394406795501709 seconds
+
+Time taken for this batch:  0.7423510551452637 seconds
+
+Time taken for this batch:  0.651214599609375 seconds
+
+Time taken for this batch:  0.6982090473175049 seconds
+
+Time taken for this batch:  0.5102896690368652 seconds
+
+Time taken for this batch:  0.48700928688049316 seconds
+
+Time taken for this batch:  0.7062907218933105 seconds
+
+Time taken for this batch:  1.0709505081176758 seconds
+
+Time taken for this batch:  0.6850688457489014 seconds
+
+Time taken for this batch:  0.6986865997314453 seconds
+
+Time taken for this batch:  0.5227973461151123 seconds
+
+Time taken for this batch:  0.8562476634979248 seconds
+
+Time taken for this batch:  0.9696609973907471 seconds
+
+Time taken for this batch:  1.0457367897033691 seconds
+
+Time taken for this batch:  0.7679004669189453 seconds
+
+Time taken for this batch:  0.6551225185394287 seconds
+
+Time taken for this batch:  0.5409808158874512 seconds
+
+Time taken for this batch:  0.5416872501373291 seconds
+
+Time taken for this batch:  0.4940059185028076 seconds
+
+Time taken for this batch:  0.6309070587158203 seconds
+
+Time taken for this batch:  0.8017418384552002 seconds
+
+Time taken for this batch:  0.763300895690918 seconds
+
+Time taken for this batch:  0.7692005634307861 seconds
+
+Time taken for this batch:  0.6780095100402832 seconds
+
+Time taken for this batch:  0.679940938949585 seconds
+
+Time taken for this batch:  0.6443958282470703 seconds
+
+Time taken for this batch:  0.5470712184906006 seconds
+
+Time taken for this batch:  0.5452282428741455 seconds
+
+Time taken for this batch:  0.5507097244262695 seconds
+
+Time taken for this batch:  0.6780970096588135 seconds
+
+Time taken for this batch:  0.6469359397888184 seconds
+
+Time taken for this batch:  0.6483931541442871 seconds
+
+Time taken for this batch:  0.7351846694946289 seconds
+
+Time taken for this batch:  0.5988702774047852 seconds
+
+Time taken for this batch:  0.7694087028503418 seconds
+
+Time taken for this batch:  0.6224243640899658 seconds
+
+Time taken for this batch:  0.42872071266174316 seconds
+
+Time taken for this batch:  0.6748356819152832 seconds
+
+Time taken for this batch:  0.7507028579711914 seconds
+
+Time taken for this batch:  0.7324113845825195 seconds
+
+Time taken for this batch:  0.5465347766876221 seconds
+
+Time taken for this batch:  0.41444945335388184 seconds
+
+Time taken for this batch:  0.4134814739227295 seconds
+
+Time taken for this batch:  0.514716386795044 seconds
+
+Time taken for this batch:  0.3032259941101074 seconds
+
+Time taken for this batch:  0.6221380233764648 seconds
+
+Time taken for this batch:  0.7190837860107422 seconds
+
+Time taken for this batch:  0.5875251293182373 seconds
+
+Time taken for this batch:  0.623643159866333 seconds
+
+Time taken for this batch:  0.7076890468597412 seconds
+
+Time taken for this batch:  0.7444214820861816 seconds
+
+Time taken for this batch:  0.7256162166595459 seconds
+
+Time taken for this batch:  0.7125167846679688 seconds
+
+Time taken for this batch:  0.454819917678833 seconds
+
+Time taken for this batch:  0.6716117858886719 seconds
+
+Time taken for this batch:  0.630234956741333 seconds
+
+Time taken for this batch:  0.704155445098877 seconds
+
+Time taken for this batch:  0.9530725479125977 seconds
+
+Time taken for this batch:  0.8441028594970703 seconds
+
+Time taken for this batch:  0.6041123867034912 seconds
+
+Time taken for this batch:  0.6882095336914062 seconds
+
+Time taken for this batch:  0.9058725833892822 seconds
+
+Time taken for this batch:  1.1995644569396973 seconds
+
+Time taken for this batch:  0.5583035945892334 seconds
+
+Time taken for this batch:  0.8048560619354248 seconds
+
+Time taken for this batch:  0.6525635719299316 seconds
+
+Time taken for this batch:  0.5695650577545166 seconds
+
+Time taken for this batch:  0.6155593395233154 seconds
+
+Time taken for this batch:  0.7167484760284424 seconds
+
+Time taken for this batch:  0.8307948112487793 seconds
+
+Time taken for this batch:  0.751690149307251 seconds
+
+Time taken for this batch:  0.7713143825531006 seconds
+
+Time taken for this batch:  0.8094902038574219 seconds
+
+Time taken for this batch:  0.42438650131225586 seconds
+
+Time taken for this batch:  0.8031747341156006 seconds
+
+Time taken for this batch:  0.40550804138183594 seconds
+
+Time taken for this batch:  0.6803774833679199 seconds
+
+Time taken for this batch:  0.8207628726959229 seconds
+
+Time taken for this batch:  0.7849609851837158 seconds
+
+Time taken for this batch:  0.5874452590942383 seconds
+
+Time taken for this batch:  0.34738993644714355 seconds
+
+Time taken for this batch:  0.37709569931030273 seconds
+
+Time taken for this batch:  0.4770479202270508 seconds
+
+Time taken for this batch:  0.3144392967224121 seconds
+
+Time taken for this batch:  0.45258474349975586 seconds
+
+Time taken for this batch:  0.4158482551574707 seconds
+
+Time taken for this batch:  0.49690961837768555 seconds
+
+Time taken for this batch:  0.742743968963623 seconds
+
+Time taken for this batch:  0.729039192199707 seconds
+
+Time taken for this batch:  0.6085405349731445 seconds
+
+Time taken for this batch:  0.885699987411499 seconds
+
+Time taken for this batch:  0.7203757762908936 seconds
+
+Time taken for this batch:  0.8185584545135498 seconds
+
+Time taken for this batch:  0.5772960186004639 seconds
+
+Time taken for this batch:  0.7187621593475342 seconds
+
+Time taken for this batch:  0.7461423873901367 seconds
+
+Time taken for this batch:  0.7671651840209961 seconds
+
+Time taken for this batch:  0.6077492237091064 seconds
+
+Time taken for this batch:  0.6582820415496826 seconds
+
+Time taken for this batch:  0.8228826522827148 seconds
+
+Time taken for this batch:  0.9893321990966797 seconds
+
+Time taken for this batch:  0.6911635398864746 seconds
+
+Time taken for this batch:  0.7364351749420166 seconds
+
+Time taken for this batch:  0.5609674453735352 seconds
+
+Time taken for this batch:  0.7602748870849609 seconds
+
+Time taken for this batch:  0.5550527572631836 seconds
+
+Time taken for this batch:  0.6755409240722656 seconds
+
+Time taken for this batch:  0.4904780387878418 seconds
+
+Time taken for this batch:  0.569061279296875 seconds
+
+Time taken for this batch:  0.4272329807281494 seconds
+
+Time taken for this batch:  0.7714805603027344 seconds
+
+Time taken for this batch:  0.9379370212554932 seconds
+
+Time taken for this batch:  0.6053757667541504 seconds
+
+Time taken for this batch:  0.657827615737915 seconds
+
+Time taken for this batch:  0.5808203220367432 seconds
+
+Time taken for this batch:  0.8996996879577637 seconds
+
+Time taken for this batch:  0.41510629653930664 seconds
+
+Time taken for this batch:  0.6626002788543701 seconds
+
+Time taken for this batch:  0.5750777721405029 seconds
+
+Time taken for this batch:  0.7534606456756592 seconds
+
+Time taken for this batch:  0.8550143241882324 seconds
+
+Time taken for this batch:  0.49833226203918457 seconds
+
+Time taken for this batch:  0.4832470417022705 seconds
+
+Time taken for this batch:  0.8068966865539551 seconds
+
+Time taken for this batch:  0.7155814170837402 seconds
+
+Time taken for this batch:  0.9970047473907471 seconds
+
+Time taken for this batch:  0.6681919097900391 seconds
+
+Time taken for this batch:  0.7663323879241943 seconds
+
+Time taken for this batch:  0.9905283451080322 seconds
+
+Time taken for this batch:  0.6911916732788086 seconds
+
+Time taken for this batch:  0.7117753028869629 seconds
+
+Time taken for this batch:  0.5268735885620117 seconds
+
+Time taken for this batch:  0.7023012638092041 seconds
+
+Time taken for this batch:  0.7888410091400146 seconds
+
+Time taken for this batch:  0.6504895687103271 seconds
+
+Time taken for this batch:  0.6591653823852539 seconds
+
+Time taken for this batch:  0.6496586799621582 seconds
+
+Time taken for this batch:  0.8139524459838867 seconds
+
+Time taken for this batch:  0.5292549133300781 seconds
+
+Time taken for this batch:  0.9009318351745605 seconds
+
+Time taken for this batch:  0.6853249073028564 seconds
+
+Time taken for this batch:  0.37351489067077637 seconds
+
+Time taken for this batch:  0.5562777519226074 seconds
+
+Time taken for this batch:  0.5956120491027832 seconds
+
+Time taken for this batch:  0.6903674602508545 seconds
+
+Time taken for this batch:  0.5850965976715088 seconds
+
+Time taken for this batch:  0.790463924407959 seconds
+
+Time taken for this batch:  0.8146424293518066 seconds
+
+Time taken for this batch:  0.4676651954650879 seconds
+
+Time taken for this batch:  0.5911800861358643 seconds
+
+Time taken for this batch:  0.8598151206970215 seconds
+
+Time taken for this batch:  0.5325751304626465 seconds
+
+Time taken for this batch:  0.6860895156860352 seconds
+
+Time taken for this batch:  0.7560088634490967 seconds
+
+Time taken for this batch:  0.6985609531402588 seconds
+
+Time taken for this batch:  0.7098753452301025 seconds
+
+Time taken for this batch:  0.6038012504577637 seconds
+
+Time taken for this batch:  0.8525664806365967 seconds
+
+Time taken for this batch:  0.669497013092041 seconds
+
+Time taken for this batch:  0.6328787803649902 seconds
+
+Time taken for this batch:  0.730738639831543 seconds
+
+Time taken for this batch:  0.726553201675415 seconds
+
+Time taken for this batch:  0.527909517288208 seconds
+
+Time taken for this batch:  0.5333619117736816 seconds
+
+Time taken for this batch:  0.36824727058410645 seconds
+
+Time taken for this batch:  0.6224124431610107 seconds
+
+Time taken for this batch:  0.4426887035369873 seconds
+
+Time taken for this batch:  0.5040762424468994 seconds
+
+Time taken for this batch:  0.8057951927185059 seconds
+
+Time taken for this batch:  0.9183845520019531 seconds
+
+Time taken for this batch:  0.5865726470947266 seconds
+
+Time taken for this batch:  0.5733053684234619 seconds
+
+Time taken for this batch:  0.5385193824768066 seconds
+
+Time taken for this batch:  0.5792036056518555 seconds
+
+Time taken for this batch:  0.4904773235321045 seconds
+
+Time taken for this batch:  0.5006892681121826 seconds
+
+Time taken for this batch:  0.6305971145629883 seconds
+
+Time taken for this batch:  0.594571590423584 seconds
+
+Time taken for this batch:  0.5631468296051025 seconds
+
+Time taken for this batch:  0.7847013473510742 seconds
+
+Time taken for this batch:  0.7780132293701172 seconds
+
+Time taken for this batch:  0.6693823337554932 seconds
+
+Time taken for this batch:  0.8866903781890869 seconds
+
+Time taken for this batch:  0.6912639141082764 seconds
+
+Time taken for this batch:  0.6362898349761963 seconds
+
+Time taken for this batch:  0.5171082019805908 seconds
+
+Time taken for this batch:  0.6430284976959229 seconds
+
+Time taken for this batch:  0.8340225219726562 seconds
+
+Time taken for this batch:  0.6361958980560303 seconds

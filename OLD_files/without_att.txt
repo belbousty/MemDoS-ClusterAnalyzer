@@ -1,0 +1,15 @@
+[+] wait 2 
+[+] wait 1 
+[+] Start
+         961346998      l3_misses                                                   
+[+] Ended
+[+] wait 2 
+[+] wait 1 
+[+] Start
+         942000269      l3_misses                                                   
+[+] Ended
+[+] wait 2 
+[+] wait 1 
+[+] Start
+         961604064      l3_misses                                                   
+[+] Ended
