@@ -1,0 +1,71 @@
+{
+"pods": [
+    {
+        "nodeName": "minikube",
+        "name": "attacker00",
+        "image" : "docker.io/library/attacker:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "4000Mi",
+                "memory": "800m"    
+            }
+        ]
+    },
+    {
+        "nodeName": "minikube",
+        "name": "victim00",
+        "image" : "docker.io/library/hibench:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "4000Mi",
+                "memory": "800m"    
+            }
+        ]
+    },
+    {
+        "nodeName": "minikube-m02",
+        "name": "attacker10",
+        "image" : "docker.io/library/attacker:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "4000Mi",
+                "memory": "800m"    
+            }
+        ]
+    },
+    {
+        "nodeName": "minikube-m02",
+        "name": "victim10",
+        "image" : "docker.io/library/hibench:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "4000Mi",
+                "memory": "800m"    
+            }
+        ]
+    }
+]}   

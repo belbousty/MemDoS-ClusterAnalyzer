@@ -15,6 +15,18 @@ To run it with Minikube:
 # Migrate pod to node
     python3 main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
 ```
+
+# Version Requirements
+```console
+    Docker version 20.10.24
+    minikube version: v1.30.1
+    Python 3.8.10
+# Install python libraries
+    pip install json
+    pip install pyyaml
+# Installing perf
+    sudo apt install linux-tools
+```
 # Fixed issues
 Allowing perf stat capability:
 ```console

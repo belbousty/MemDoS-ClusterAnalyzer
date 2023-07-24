@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podName
+spec:
+  nodeName: nodeName
+  containers:
+  - name: pod
+    image: podImage
+    command: ["/bin/sh"]
+    args: ["-c", "service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep 30; done;"]
+    imagePullPolicy: IfNotPresent
+    resources:
+      limits:
+        memory: memoryLimit
+        cpu: cpuLimit
+      requests: 
+        memory: memoryRequests
+        cpu: cpuRequests
