@@ -18,9 +18,9 @@ To run it with Minikube:
 
 # Version Requirements
 ```console
-    Docker version 20.10.24
-    minikube version: v1.30.1
-    Python 3.8.10
+## Docker version 20.10.24
+## minikube version: v1.30.1
+## Python 3.8.10
 # Install python libraries
     pip install json
     pip install pyyaml
