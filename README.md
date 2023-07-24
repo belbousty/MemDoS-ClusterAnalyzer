@@ -11,6 +11,6 @@ To run it with Minikube:
 # Fixed issues
 Allowing perf stat capability:
 ```console
-    # On the local machine
+# On the local machine
     echo -1 > /proc/sys/kernel/perf_event_paranoid
 ```
