@@ -8,6 +8,12 @@ To run it with Minikube:
     ./build.sh [NUM_NODES] [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
 
 ```
+
+# Migration 
+```console
+# Migrate pod to node
+    python3 main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
+```
 # Fixed issues
 Allowing perf stat capability:
 ```console
