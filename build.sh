@@ -46,7 +46,7 @@ else
     cd hibenchPod && DOCKER_BUILDKIT=0 docker build -t hibench:0.0.1 . && cd ../
 fi
 
-# load necessary image
+# load necessary images
 if minikube image ls | grep "docker.io/library/attacker:0.0.1"
 then
     echo "[+] attacker:0.0.1 minikube already exists"
