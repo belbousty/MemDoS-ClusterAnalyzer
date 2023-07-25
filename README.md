@@ -1,4 +1,6 @@
 This repository helps launching a N node cluster with x number of attackers an y number of victims in each node
+# Specify pods in structure.json
+
 
 # Launch
 

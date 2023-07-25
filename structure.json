@@ -1,42 +1,9 @@
 {
 "pods": [
     {
-        "nodeName": "minikube",
+        "type": "attacker",
         "name": "attacker00",
-        "image" : "docker.io/library/attacker:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "4000Mi",
-                "memory": "800m"    
-            }
-        ]
-    },
-    {
         "nodeName": "minikube",
-        "name": "victim00",
-        "image" : "docker.io/library/hibench:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "4000Mi",
-                "memory": "800m"    
-            }
-        ]
-    },
-    {
-        "nodeName": "minikube-m02",
-        "name": "attacker10",
         "image" : "docker.io/library/attacker:0.0.1",
         "limits" : [
             {
@@ -46,14 +13,15 @@
         ],
         "requests" :[
             {
-                "cpu": "4000Mi",
-                "memory": "800m"    
+                "cpu": "800m",
+                "memory": "2000Mi"    
             }
         ]
     },
     {
-        "nodeName": "minikube-m02",
-        "name": "victim10",
+        "type": "victim",
+        "name": "victim00",
+        "nodeName": "minikube",
         "image" : "docker.io/library/hibench:0.0.1",
         "limits" : [
             {
@@ -63,8 +31,44 @@
         ],
         "requests" :[
             {
-                "cpu": "4000Mi",
-                "memory": "800m"    
+                "cpu": "800m",
+                "memory": "4000Mi"   
+            }
+        ]
+    },
+    {
+        "type": "attacker",
+        "name": "attacker10",
+        "nodeName": "minikube-m02",
+        "image" : "docker.io/library/attacker:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "800m",
+                "memory": "4000Mi"   
+            }
+        ]
+    },
+    {
+        "type": "victim",
+        "name": "victim10",
+        "nodeName": "minikube-m02",
+        "image" : "docker.io/library/hibench:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "800m",
+                "memory": "4000Mi"   
             }
         ]
     }

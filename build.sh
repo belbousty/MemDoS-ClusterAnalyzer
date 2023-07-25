@@ -66,6 +66,8 @@ fi
 
 # applying configuration
 echo "[+] Creating Pods from config.yaml"
+
+python3 src/structure.py
 kubectl apply -f config/config.yaml
 
 echo "[+] Finished"
