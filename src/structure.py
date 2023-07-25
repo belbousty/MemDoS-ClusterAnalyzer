@@ -2,8 +2,8 @@ import yaml
 import json
 
 def add_pod_to_config(json_filename):
-    
-    with open(json_filename, 'w') as file:
+
+    with open(json_filename, 'r') as file:
         data = json.load(file)
 
     with open('config/config.yaml', 'w') as config:
