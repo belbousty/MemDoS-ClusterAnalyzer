@@ -4,6 +4,7 @@ import sys
 config.load_kube_config()
 api_client = client.CoreV1Api()
 
+
 def get_nodes(namespace = "default"):
     Nodes = api_client.list_node().items
     nodes = {}
