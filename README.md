@@ -1,7 +1,7 @@
 This repository helps launching a N node cluster with x number of attackers an y number of victims in each node
 # Specify pods in structure.json
 ```console
-# In each case you should specify exactly the values required in structure.json
+# You should specify exactly the values required in structure.json
 # It is necessary for "type" to be either "attacker" or "victim" 
 # The image is either  "docker.io/library/attacker:0.0.1" or "docker.io/library/hibench:0.0.1"
 # To check minikube images:  minikube image list
