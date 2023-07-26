@@ -10,6 +10,7 @@ This repository helps launching a N node cluster with x number of attackers an y
         "type": "attacker",
         "name": "attacker00",
         "nodeName": "minikube",
+        "attackType": "llc",
         "image" : "docker.io/library/attacker:0.0.1",
         "limits" : [
             {
@@ -23,7 +24,30 @@ This repository helps launching a N node cluster with x number of attackers an y
                 "memory": "2000Mi"    
             }
         ]
-    }    
+    }
+# AttackType should be either 'llc' or 'lock'
+# Example for the victim: 
+    {
+        "type": "victim",
+        "name": "victim10",
+        "workload": "ml",
+        "benchmark": "kmeans",
+        "nodeName": "minikube-m02",
+        "image" : "docker.io/library/hibench:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "800m",
+                "memory": "4000Mi"   
+            }
+        ]
+    }
+check "https://github.com/Intel-bigdata/HiBench/" for workloads and benchmarks
 ```
 
 # Launch

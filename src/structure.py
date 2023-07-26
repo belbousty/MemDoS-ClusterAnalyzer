@@ -15,6 +15,12 @@ def add_pod_to_config(json_filename):
             with open(f'config/{type}.yaml', 'r') as attacker:
                 yaml_data = yaml.load(attacker, Loader=yaml.FullLoader)
             
+            if type == 'attacker':
+                yaml_data['metadata']['annotations']['attackType'] = pod['attackType']
+            else:
+                yaml_data['metadata']['annotations']['workload'] = pod['workload']
+                yaml_data['metadata']['annotations']['benchmark'] = pod['benchmark']
+                
             yaml_data['spec']['nodeName'] = pod['nodeName']
             yaml_data['metadata']['name'] = pod['name']
             
@@ -24,7 +30,7 @@ def add_pod_to_config(json_filename):
             yaml_data['spec']['containers'][0]['resources']['requests']['memory'] = pod['requests'][0]['memory']
             yaml_data['spec']['containers'][0]['resources']['requests']['cpu'] = pod['requests'][0]['cpu']
 
-            yaml.dump(yaml_data, config, sort_keys=False, default_flow_style=None)
+            yaml.dump(yaml_data, config, sort_keys=False, default_flow_style=None) 
             
             config.write('\n---\n')
 
