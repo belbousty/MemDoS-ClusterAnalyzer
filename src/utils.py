@@ -1,6 +1,8 @@
 from kubernetes import client, config
-import sys
-    
+from kubernetes.stream import stream
+import sys, re
+import shlex
+
 config.load_kube_config()
 api_client = client.CoreV1Api()
 
@@ -83,3 +85,53 @@ def check_benchmark(benchmark):
         if benchmark in workloads[workload]:
             return True 
     return False
+
+def check_pod_name(pod_name, role):
+    if (role == 'attacker'):
+        pattern = r'attacker.*'
+    elif (role == 'victim'):
+        pattern = r'victim.*'
+    return re.match(pattern, pod_name)
+
+   
+##
+#  info could be: 'duration', 'start', 'app', 'attack
+##
+def get_experiment_info(info, namespace="default"):
+    pods = api_client.list_namespaced_pod(namespace).items
+    nodes = get_nodes(namespace)
+    infos = {}
+    for pod in pods:
+        nodeName = pod.spec.node_name
+        if (info in ('duration', 'start', 'attack')):
+            if (check_pod_name(pod.metadata.name, 'attacker') and nodeName in nodes):
+                if info == 'attack':
+                    infos[pod.metadata.name] = pod.metadata.annotations['attackType']
+                else:
+                    infos[pod.metadata.name] =  pod.metadata.annotations[info]
+        elif (info == 'app'):
+            if (check_pod_name(pod.metadata.name, 'victim') and nodeName in nodes):
+        
+                infos[pod.metadata.name] = {
+                    'benchmark' :pod.metadata.annotations['benchmark'],
+                    'workload' : pod.metadata.annotations['workload']
+                }
+    return infos
+
+def exec_command_in_pod(pod_name, command, namespace='default'):
+    resp = stream(api_client.connect_get_namespaced_pod_exec,
+                  pod_name,
+                  namespace,
+                  command = shlex.split(command),
+                  stderr=True, stdin=False,
+                  stdout=True, tty=False)
+    return resp
+
+def get_pod_names(namespace='default'):
+    nodes = get_nodes(namespace)
+    pods = []
+    for node in nodes:
+        for pod in nodes[node]:
+            pods.append(pod)
+    return pods
+

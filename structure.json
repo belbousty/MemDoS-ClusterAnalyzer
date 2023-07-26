@@ -5,6 +5,8 @@
         "name": "attacker00",
         "nodeName": "minikube",
         "attackType": "llc",
+        "duration": "2",
+        "start": "1",
         "image" : "docker.io/library/attacker:0.0.1",
         "limits" : [
             {
@@ -44,6 +46,8 @@
         "name": "attacker10",
         "nodeName": "minikube-m02",
         "attackType": "lock",
+        "duration": "2",
+        "start": "1",
         "image" : "docker.io/library/attacker:0.0.1",
         "limits" : [
             {

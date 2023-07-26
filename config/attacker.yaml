@@ -4,6 +4,8 @@ metadata:
   name: podName
   annotations:
     attackType: "attack"
+    duration: xDration # duration of the attack
+    start: xStart # start at the x minute of the experiment
 spec:
   nodeName: nodeName
   containers:

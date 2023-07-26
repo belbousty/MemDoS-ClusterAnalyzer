@@ -2,6 +2,8 @@ import yaml
 import json
 import utils
 import sys
+
+
 def add_pod_to_config(json_filename):
 
     with open(json_filename, 'r') as file:
@@ -21,6 +23,8 @@ def add_pod_to_config(json_filename):
                     print(f"[-]{pod['attackType']} is not a workload")
                     sys.exit()
                 yaml_data['metadata']['annotations']['attackType'] = pod['attackType']
+                yaml_data['metadata']['annotations']['duration'] = pod['duration']
+                yaml_data['metadata']['annotations']['start'] = pod['start']
             else:
                 if not utils.check_workload(pod['workload']):
                     print(f"[-] {pod['workload']} is not a workload")
