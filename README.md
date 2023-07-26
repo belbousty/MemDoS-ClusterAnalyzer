@@ -63,7 +63,7 @@ To run it with Minikube:
 # Migration 
 ```console
 # Migrate pod to node
-    python3 main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
+    python3 migrate.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
 ```
 
 # Version Requirements
