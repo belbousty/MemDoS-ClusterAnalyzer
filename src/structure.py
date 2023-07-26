@@ -1,6 +1,7 @@
 import yaml
 import json
-
+import utils
+import sys
 def add_pod_to_config(json_filename):
 
     with open(json_filename, 'r') as file:
@@ -16,9 +17,19 @@ def add_pod_to_config(json_filename):
                 yaml_data = yaml.load(attacker, Loader=yaml.FullLoader)
             
             if type == 'attacker':
+                if not utils.check_attack_type(pod['attackType']):
+                    print(f"[-]{pod['attackType']} is not a workload")
+                    sys.exit()
                 yaml_data['metadata']['annotations']['attackType'] = pod['attackType']
             else:
+                if not utils.check_workload(pod['workload']):
+                    print(f"[-] {pod['workload']} is not a workload")
+                    sys.exit()
                 yaml_data['metadata']['annotations']['workload'] = pod['workload']
+                
+                if not utils.check_benchmark(pod['benchmark']):
+                    print(f"[-] {pod['benchmark']} is not a benchmark")
+                    sys.exit()
                 yaml_data['metadata']['annotations']['benchmark'] = pod['benchmark']
                 
             yaml_data['spec']['nodeName'] = pod['nodeName']

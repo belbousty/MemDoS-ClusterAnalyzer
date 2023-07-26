@@ -4,6 +4,14 @@ import sys
 config.load_kube_config()
 api_client = client.CoreV1Api()
 
+workloads = {
+    'graph': ['nweight', 'pagerank'], 
+    'micro': ['dfsioe', 'repartition', 'sleep', 'sort', 'terasort', 'wordcount'], 
+    'ml': ['als', 'bayes', 'correlation', 'gbt', 'gmm', 'kmeans', 'lda', 'linear', 'lr', 'pca', 'rf', 'summarizer', 'svd', 'svm', 'xgboost'],
+    'sql': ['aggregation', 'common', 'join', 'scan'],
+    'streaming': ['fixwindow', 'identity', 'repartition', 'wordcount'], 
+    'websearch' : ['nutchindexing', 'pagerank']
+    }
 
 def get_nodes(namespace = "default"):
     Nodes = api_client.list_node().items
@@ -58,3 +66,20 @@ def creating_pod(pod_namespace, pod):
         print(f"[-] Error occured while creating the pod {pod.metadata.name}")
         sys.exit()
     print(f"[+] Pod '{pod.metadata.name}' created")
+
+
+def check_attack_type(attack_type):
+    if attack_type in ('lock','llc'):
+        return True
+    return False
+
+def check_workload(workload):
+    if workload in workloads:
+        return True
+    return False
+
+def check_benchmark(benchmark):
+    for workload in workloads:
+        if benchmark in workloads[workload]:
+            return True 
+    return False
