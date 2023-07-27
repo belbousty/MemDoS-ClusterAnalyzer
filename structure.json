@@ -3,6 +3,7 @@
     {
         "type": "attacker",
         "name": "attacker00",
+        "namespace": "default",
         "nodeName": "minikube",
         "attackType": "llc",
         "duration": "2",
@@ -24,6 +25,7 @@
     {
         "type": "victim",
         "name": "victim00",
+        "namespace": "default",
         "nodeName": "minikube",
         "workload": "ml",
         "benchmark": "kmeans",
@@ -44,6 +46,7 @@
     {
         "type": "attacker",
         "name": "attacker10",
+        "namespace": "default",
         "nodeName": "minikube-m02",
         "attackType": "lock",
         "duration": "2",
@@ -65,6 +68,7 @@
     {
         "type": "victim",
         "name": "victim10",
+        "namespace": "default",
         "workload": "ml",
         "benchmark": "kmeans",
         "nodeName": "minikube-m02",

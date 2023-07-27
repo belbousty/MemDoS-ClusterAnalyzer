@@ -1,4 +1,4 @@
-import sys, threading
+import sys, threading, argparse
 import utils
 
 def migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace = "default"):
@@ -40,15 +40,19 @@ def migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace = "default"
 
 
 if __name__ == '__main__':
-    if (len(sys.argv) != 4 and len(sys.argv) != 5):
-        print("[-] Parameters needes : python3 main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]")
-        sys.exit()
-    pod_name = sys.argv[1]
-    new_pod_name = sys.argv[2]
-    dest_node_name = sys.argv[3]
-    if (len(sys.argv) == 5): 
-        pod_namespace = sys.argv[4]
-    else:
-        pod_namespace = 'default'
+    
+    parser = argparse.ArgumentParser(description=' Launch Experiment.')
+    parser.add_argument("--pod", help="Pod name", required=True)
+    parser.add_argument("--new-pod", help="New pod name", required=True)
+    parser.add_argument("--dest-node", help="Destination Node", required=True)
+    parser.add_argument("--namespace", help="Namespace", default='default')
+    args = parser.parse_args()
+
+    pod_name = args.pod
+    new_pod_name = args.new_pod
+    dest_node_name = args.dest_node
+    pod_namespace = args.namespace
+
+    
     migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace)
 

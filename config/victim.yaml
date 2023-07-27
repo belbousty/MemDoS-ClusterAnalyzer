@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: podName
+  namespace: namespace
   annotations:
     workload: "workload"
     benchmark: "benchmark"

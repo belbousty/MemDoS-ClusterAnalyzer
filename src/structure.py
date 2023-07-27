@@ -20,7 +20,7 @@ def add_pod_to_config(json_filename):
             
             if type == 'attacker':
                 if not utils.check_attack_type(pod['attackType']):
-                    print(f"[-]{pod['attackType']} is not a workload")
+                    print(f"[-]{pod['attackType']} is not an attack")
                     sys.exit()
                 yaml_data['metadata']['annotations']['attackType'] = pod['attackType']
                 yaml_data['metadata']['annotations']['duration'] = pod['duration']
@@ -28,16 +28,22 @@ def add_pod_to_config(json_filename):
             else:
                 if not utils.check_workload(pod['workload']):
                     print(f"[-] {pod['workload']} is not a workload")
+                    print(f"    You have to choose a workload from this list:")
+                    for workload in utils.workloads:
+                        print(f"    - {workload}")
                     sys.exit()
                 yaml_data['metadata']['annotations']['workload'] = pod['workload']
-                
                 if not utils.check_benchmark(pod['benchmark']):
                     print(f"[-] {pod['benchmark']} is not a benchmark")
+                    print(f"    You have to choose a benchmark from this list:")
+                    for benchmark in utils.workloads[pod['workload']]:
+                        print(f"    - {benchmark}")
                     sys.exit()
                 yaml_data['metadata']['annotations']['benchmark'] = pod['benchmark']
                 
             yaml_data['spec']['nodeName'] = pod['nodeName']
             yaml_data['metadata']['name'] = pod['name']
+            yaml_data['metadata']['namespace'] = pod['namespace']
             
             yaml_data['spec']['containers'][0]['image'] = pod['image']
             yaml_data['spec']['containers'][0]['resources']['limits']['memory'] = pod['limits'][0]['memory']
