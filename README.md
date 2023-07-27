@@ -11,6 +11,8 @@ This repository helps launching a N node cluster with x number of attackers an y
         "name": "attacker00",
         "nodeName": "minikube",
         "attackType": "llc",
+        "duration": "2", ## The attack will take 2 minutes
+        "start": "1", ## The attack will start exactly after the first minute of the total duration of the experiment
         "image" : "docker.io/library/attacker:0.0.1",
         "limits" : [
             {
@@ -29,10 +31,10 @@ This repository helps launching a N node cluster with x number of attackers an y
 # Example for the victim: 
     {
         "type": "victim",
-        "name": "victim10",
-        "workload": "ml",
-        "benchmark": "kmeans",
-        "nodeName": "minikube-m02",
+        "name": "victim00",
+        "nodeName": "minikube",
+        "workload": "ml", ## Specify the workload 
+        "benchmark": "kmeans", ## Specify the benchmark
         "image" : "docker.io/library/hibench:0.0.1",
         "limits" : [
             {
@@ -63,9 +65,13 @@ To run it with Minikube:
 # Migration 
 ```console
 # Migrate pod to node
-    python3 main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
+    python3 src/main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
 ```
-
+# Start the experiment 
+```console
+# launching experiment in 2 minutes
+    python3 src/launch.py  --duration 2
+```
 # Version Requirements
 ```console
 ## Docker version 20.10.24

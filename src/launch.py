@@ -60,5 +60,5 @@ if __name__ == '__main__':
     parser.add_argument("--duration", type=int, help="Expirement duration in minutes", default= 10, required=True)
 
     args = parser.parse_args()
-    launch_experiment(args.duration)
+    #launch_experiment(args.duration)
     pass
