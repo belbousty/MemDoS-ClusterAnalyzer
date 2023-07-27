@@ -65,12 +65,14 @@ To run it with Minikube:
 # Migration 
 ```console
 # Migrate pod to node
-    python3 src/main.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
+    python3 src/migrate.py [POD_NAME] [NEW_POD_NAME] [DEST_NODE]
+
 ```
 # Start the experiment 
 ```console
 # launching experiment in 2 minutes
     python3 src/launch.py  --duration 2
+
 ```
 # Version Requirements
 ```console
