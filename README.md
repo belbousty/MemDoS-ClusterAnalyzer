@@ -49,7 +49,7 @@ This repository helps launching a N node cluster with x number of attackers an y
             }
         ]
     }
-check "https://github.com/Intel-bigdata/HiBench/" for workloads and benchmarks
+# check "https://github.com/Intel-bigdata/HiBench/" for workloads and benchmarks
 ```
 
 # Launch
