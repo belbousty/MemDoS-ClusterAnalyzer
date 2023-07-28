@@ -119,13 +119,17 @@ def get_experiment_info(info, namespace="default"):
     return infos
 
 def exec_command_in_pod(pod_name, command, namespace='default'):
-    resp = stream(api_client.connect_get_namespaced_pod_exec,
+    try :
+        resp = stream(api_client.connect_get_namespaced_pod_exec,
                   pod_name,
                   namespace,
                   command = shlex.split(command),
                   stderr=True, stdin=False,
                   stdout=True, tty=False)
-    return resp
+        return resp
+    except ValueError as e:
+        pass
+
 
 def get_pod_names(namespace='default'):
     nodes = get_nodes(namespace)

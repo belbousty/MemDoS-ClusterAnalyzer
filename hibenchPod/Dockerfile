@@ -26,11 +26,11 @@ RUN chmod 777 /root/docker-config.sh
 RUN chmod 777 /root/run_dfs.sh
 
 # Run Basic Install
-RUN /root/docker-config.sh
+RUN echo Y | /root/docker-config.sh
 
 
 # installing perf binary
-RUN apt update && apt upgrade 
-RUN apt install linux-tools && apt install linux-tools-generic
+RUN echo Y | apt update && echo Y | apt upgrade 
+RUN echo Y | apt install linux-tools-generic
 RUN cp /usr/lib/linux-tools/4.15.0-213-generic/perf /root
 
