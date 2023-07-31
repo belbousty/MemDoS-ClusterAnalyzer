@@ -1,1 +1,5 @@
 notes.txt
+
+config/config.yaml
+src/__pycache__
+__pycache__

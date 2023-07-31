@@ -139,3 +139,18 @@ def get_pod_names(namespace='default'):
             pods.append(pod)
     return pods
 
+
+def extract_performance(output):
+    index = output.find("Performance counter stats for")
+    return output[index:]
+
+
+def perf():
+    LLC_load_misses = 'LLC-load-misses'
+    LLC_loads = 'LLC-loads'
+    LLC_store_misses = 'LLC-store-misses'
+    LLC_stores = 'LLC-stores'
+    cache_misses = 'cache-misses'
+    cache_references = 'cache-references'
+
+    return f"./root/perf stat -e {LLC_load_misses},{LLC_loads},{LLC_store_misses},{LLC_stores},{cache_misses},{cache_references}"
