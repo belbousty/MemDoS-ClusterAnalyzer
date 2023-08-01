@@ -26,7 +26,7 @@ def prepare_victims_benchmarks(pod_name: str):
     subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- '/HiBench/bin/workloads/{workload}/{benchmark}/prepare/prepare.sh'"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print(f"[+] Preparation Ended for {workload} {benchmark}")
 
-def run_victims_apps(duration, pod_name):
+def run_victims_apps(duration, pod_name, NoAttack):
     '''
     launch victims apps repeatedly 
 
@@ -43,7 +43,11 @@ def run_victims_apps(duration, pod_name):
     workload = app[pod_name]['workload']
 
     print(f"[+] Running {workload} {benchmark} for {pod_name} for {duration} minutes\n")
-    with open(f"stats/{pod_name}.txt", "w") as output_file:
+    filename = pod_name
+    if (NoAttack == True):
+        filename += "-no-attacks"
+     
+    with open(f"stats/{filename}.txt", "w") as output_file:
         start_time = time.time()
         while (time.time() - start_time) < (duration * 60):
             res = subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- {utils.perf()} /HiBench/bin/workloads/{workload}/{benchmark}/hadoop/run.sh"),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -83,7 +87,7 @@ def launch_attacks(pod_name, attack):
     print(f"[+] {pod_name} attack ended\n")
 
 
-def launch_experiment(duration: int, namespace='default'):
+def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
     '''
     launch Experiment
 
@@ -103,9 +107,9 @@ def launch_experiment(duration: int, namespace='default'):
             thread = threading.Thread(
                 target = run_victims_apps,
                 args = (duration,
-                        pod_name))
+                        pod_name, NoAttacks))
             threads.append(thread)
-        if (utils.check_pod_name(pod_name, 'attacker')):
+        if (utils.check_pod_name(pod_name, 'attacker') and NoAttacks == False):
             thread = threading.Thread(
                 target=launch_attacks,
                 args=(pod_name,
@@ -122,9 +126,10 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description=' Launch Experiment.')
     parser.add_argument("--duration", type=int, help="Expirement duration in minutes", default= 10, required=True)
+    parser.add_argument("--no-attacks", action="store_true", help="No attack will be launched")
+
     path = "stats"
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
     args = parser.parse_args()
-
-    launch_experiment(args.duration)
+    launch_experiment(args.duration, args.no_attacks)
