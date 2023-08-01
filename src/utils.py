@@ -146,11 +146,11 @@ def extract_performance(output):
 
 
 def perf():
-    LLC_load_misses = 'LLC-load-misses'
-    LLC_loads = 'LLC-loads'
-    LLC_store_misses = 'LLC-store-misses'
-    LLC_stores = 'LLC-stores'
-    cache_misses = 'cache-misses'
-    cache_references = 'cache-references'
-
-    return f"./root/perf stat -e {LLC_load_misses},{LLC_loads},{LLC_store_misses},{LLC_stores},{cache_misses},{cache_references}"
+    # LLC_load_misses = 'LLC-load-misses'
+    # LLC_loads = 'LLC-loads'
+    # LLC_store_misses = 'LLC-store-misses'
+    # LLC_stores = 'LLC-stores'
+    # cache_misses = 'cache-misses'
+    # cache_references = 'cache-references'
+    # {LLC_load_misses},{LLC_loads},{LLC_store_misses},{LLC_stores},{cache_misses},{cache_references}
+    return f"./root/perf stat -e LLC,LLC-misses"
