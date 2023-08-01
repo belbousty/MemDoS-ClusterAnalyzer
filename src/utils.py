@@ -16,6 +16,15 @@ workloads = {
     }
 
 def get_nodes(namespace = "default"):
+    '''
+    Extract nodes and their pods
+
+    Parameters:
+    namespace (str): the namespace in which you operate 
+
+    Returns:
+    dictionary with the nodes as keys and pods as values 
+    '''
     Nodes = api_client.list_node().items
     nodes = {}
     for node in Nodes:
@@ -28,16 +37,37 @@ def get_nodes(namespace = "default"):
 
 
 def get_pod_status(pod_name, pod_namespace = "default"):
+    '''
+    Check status f the pod
+    '''
     pod = api_client.read_namespaced_pod(pod_name, pod_namespace)
     return pod.status.conditions[-1].message
 
 def is_in_nodes(node):
+    '''
+    Check if 'node' exists
+
+    Parameters:
+    node (str): node's name
+    
+    Returns:
+    bool
+    '''
     nodes =  get_nodes()
     if not node in nodes:
         return False
     return True
 
-def is_in_pods(pod):
+def is_in_pods(pod: str):
+    '''
+    Check if 'pod' exists
+
+    Parameters:
+    pod (str): pod's name
+    
+    Returns:
+    bool
+    '''
     nodes =  get_nodes()
     bool  =  False
     for node in nodes:
@@ -45,7 +75,17 @@ def is_in_pods(pod):
             bool = True                
     return bool
 
-def pod_in_node(pod, node):
+def pod_in_node(pod: str, node: str):
+    '''
+    Check if 'node' is in 'pod'
+
+    Parameters:
+    pod (str): pod's name
+    node (str): node's name
+    
+    Returns:
+    bool
+    '''
     if not is_in_pods(pod):
         return False
     nodes =  get_nodes()
@@ -53,7 +93,17 @@ def pod_in_node(pod, node):
         return True
     return False
 
-def deleting_pod(pod_name, pod_namespace):
+def deleting_pod(pod_name: str, pod_namespace: str):
+    '''
+    Delete pod from the apporpriate pod in 'namespace'
+    
+    Parameters:
+    pod_name (str): pod's name
+    pod_namespace (str): pod's namespace
+
+    Returns:
+    bool
+    '''
     try:
         api_client.delete_namespaced_pod(pod_name, pod_namespace)
     except:
@@ -61,7 +111,17 @@ def deleting_pod(pod_name, pod_namespace):
         sys.exit()
     print(f"[+] Pod '{pod_name}' terminating")
 
-def creating_pod(pod_namespace, pod):
+def creating_pod(pod_namespace: str, pod: str):
+    '''
+    Create a new pod based on 'pod' properties
+
+    Parameters:
+    pod_namespace (str): pod's name
+    pod (str): pod's name
+
+    Returns:
+    None
+    '''
     try :
         api_client.create_namespaced_pod(pod_namespace, pod)
     except: 
@@ -70,23 +130,60 @@ def creating_pod(pod_namespace, pod):
     print(f"[+] Pod '{pod.metadata.name}' created")
 
 
-def check_attack_type(attack_type):
+def check_attack_type(attack_type: str):
+    '''
+    Check if the attack type is correct
+
+    Parameters:
+    node (str): attack's type
+    
+    Returns:
+    bool
+    '''
     if attack_type in ('lock','llc'):
         return True
     return False
 
 def check_workload(workload):
+    '''
+    Check if the workload set is correct
+
+    Parameters:
+    workload (str): workload's name
+    
+    Returns:
+    bool
+    '''
     if workload in workloads:
         return True
     return False
 
-def check_benchmark(benchmark):
+def check_benchmark(benchmark: str):
+    '''
+    Check if the workload set is correct
+
+    Parameters:
+    benchmark (str): benchmark's name
+    
+    Returns:
+    bool
+    '''
     for workload in workloads:
         if benchmark in workloads[workload]:
             return True 
     return False
 
-def check_pod_name(pod_name, role):
+def check_pod_name(pod_name: str, role: str):
+    '''
+    Check the role of the pod (attacker or victim)
+
+    Parameters:
+    pod_name (str): the name of the pod
+    role (str): role of the pod ('attacker'/'victim')
+
+    Returns:
+    bool
+    '''
     if (role == 'attacker'):
         pattern = r'attacker.*'
     elif (role == 'victim'):
@@ -94,10 +191,21 @@ def check_pod_name(pod_name, role):
     return re.match(pattern, pod_name)
 
    
-##
-#  info could be: 'duration', 'start', 'app', 'attack
-##
+
 def get_experiment_info(info, namespace="default"):
+    '''
+    get a specific information about the experiment
+
+    Parameters:
+    info (str): duration, start, attack, apps
+    
+    Returns:
+    dictionary :
+        - Duration of the attacks
+        - Start time of the attacks
+        - type of attacks
+        - type of apps for the victims
+    '''
     pods = api_client.list_namespaced_pod(namespace).items
     nodes = get_nodes(namespace)
     infos = {}
@@ -119,6 +227,16 @@ def get_experiment_info(info, namespace="default"):
     return infos
 
 def exec_command_in_pod(pod_name, command, namespace='default'):
+    '''
+    Execute command in a specific pod
+    
+    Parameters:
+    pod_name (str): pod's name
+    command (str): command to execute
+
+    Returns:
+    response of the command executed
+    '''
     try :
         resp = stream(api_client.connect_get_namespaced_pod_exec,
                   pod_name,
@@ -132,6 +250,15 @@ def exec_command_in_pod(pod_name, command, namespace='default'):
 
 
 def get_pod_names(namespace='default'):
+    '''
+    Get a list of pods' names
+
+    Parameters:
+    namespace (str)
+    
+    Returns:
+    list of strings
+    '''
     nodes = get_nodes(namespace)
     pods = []
     for node in nodes:
@@ -141,16 +268,27 @@ def get_pod_names(namespace='default'):
 
 
 def extract_performance(output):
+    '''
+    Extract only the perf performance output 
+
+    Parameters:
+    output (str): output of the command executed
+    
+    Returns:
+    performance string
+    '''
     index = output.find("Performance counter stats for")
     return output[index:]
 
 
 def perf():
-    # LLC_load_misses = 'LLC-load-misses'
-    # LLC_loads = 'LLC-loads'
-    # LLC_store_misses = 'LLC-store-misses'
-    # LLC_stores = 'LLC-stores'
-    # cache_misses = 'cache-misses'
-    # cache_references = 'cache-references'
-    # {LLC_load_misses},{LLC_loads},{LLC_store_misses},{LLC_stores},{cache_misses},{cache_references}
+    '''
+    the perf command with the appropriate stats
+
+    Parameters:
+    None
+
+    Returns:
+    perf command (str)
+    '''
     return f"./root/perf stat -e LLC,LLC-misses"

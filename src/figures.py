@@ -2,16 +2,17 @@ import matplotlib.pyplot as plt
 import re 
 
 
-def cumulative_time(time):
-    cumulative_times = [time[0]]
-    for i in range(1, len(time)):
-        cumulative_time = 0
-        for j in range(0, i+1):
-            cumulative_time += float(time[j])
-        cumulative_times.append(cumulative_time)
-    return cumulative_times
+def extract(stat :str, victim: str):
+    '''
+    Extract values of statistic properties
 
-def extract(stat, victim):
+    Parameters:
+    stat (str): either 'time', 'LLC', 'LLC-misses'
+    victim (str): name of the victim pod (victimXX)
+
+    Returns:
+    statistic property values during the experience
+    '''
     with open(f"stats/{victim}.txt", "r") as f:
         lines = f.readlines()
     if (stat == 'time'):
@@ -25,21 +26,18 @@ def extract(stat, victim):
             stats.append(float(matches[0]))
     return stats
 
-# def get_stats_load(file):
-#     #stats =['LLC-load-misses', 'LLC-loads', 'LLC-store-misses', 'LLC-stores', 'cache-misses', 'cache-references']
-#     time = extract("time", file)
-#     ctime = cumulative_time(time)
-#     load_misses = extract('LLC-load-misses', file)
-#     loads = extract('LLC-loads', file)
 
-#     plt.plot(ctime, load_misses, marker='o', linestyle='-', color='r')
-#     plt.plot(ctime, loads, marker='o', linestyle='-', color='g')
+def get_stats_load(file: str):
+    '''
+    Plot statistics for a specific victim
     
-#     plt.xlabel('time')
-    
-#     plt.show()
+    Parameters:
+    file (str): name of the victim 
 
-def get_stats_load(file):
+    Returns:
+    None
+    
+    '''
     stats =['LLC','LLC-misses', 'time']
     total = extract(stats[0], file)
     LLC = [total[0]]
@@ -56,6 +54,7 @@ def get_stats_load(file):
     plt.title(f"LLC stats ({file})")
     plt.show()
 
+    # plot execution time of the app during experience
     time = extract(stats[2], file)
     for i in range(0,len(time)):    
         plt.bar(i, time[i], linestyle='-', color='green')
@@ -63,6 +62,10 @@ def get_stats_load(file):
     plt.title(f"App run time {file}")
     plt.ylabel("time in seconds")
     plt.show()
+
+
+
+
 
 if __name__ == '__main__' :
     get_stats_load('victim00')
