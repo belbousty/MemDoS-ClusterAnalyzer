@@ -1,89 +1,26 @@
 {
-"pods": [
-    {
-        "type": "attacker",
-        "name": "attacker00",
-        "namespace": "default",
-        "nodeName": "minikube",
-        "attackType": "lock",
-        "duration": "15",
-        "start": "0",
-        "image" : "docker.io/library/attacker:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "2000Mi"    
-            }
-        ]
-    },
-    {
-        "type": "victim",
-        "name": "victim00",
-        "namespace": "default",
-        "nodeName": "minikube",
-        "workload": "ml",
-        "benchmark": "kmeans",
-        "image" : "docker.io/library/hibench:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "4000Mi"   
-            }
-        ]
-    },
-    {
-        "type": "attacker",
-        "name": "attacker10",
-        "namespace": "default",
-        "nodeName": "minikube",
-        "attackType": "lock",
-        "duration": "15",
-        "start": "0",
-        "image" : "docker.io/library/attacker:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "4000Mi"   
-            }
-        ]
-    },
-    {
-        "type": "victim",
-        "name": "victim10",
-        "namespace": "default",
-        "workload": "ml",
-        "benchmark": "kmeans",
-        "nodeName": "minikube",
-        "image" : "docker.io/library/hibench:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "4000Mi"   
-            }
-        ]
-    }
-]}   
+    "attackers": [ 
+        {
+            "node": "1",
+            "attackType": "lock",
+            "duration": "15",
+            "start": "0"
+        },
+        {
+            "node": "2",
+            "attackType": "lock",
+            "duration": "15",
+            "start": "0"
+        }],
+
+    "victims": [{
+            "node": "1",
+            "workload": "ml",
+            "benchmark": "kmeans"
+        },
+        {
+            "node": "2",
+            "workload": "ml",
+            "benchmark": "kmeans"
+        }]
+}
