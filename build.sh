@@ -62,12 +62,3 @@ else
     echo "[+] Loading hibench image to minikube"
     minikube image load hibench:0.0.1
 fi
-
-
-# applying configuration
-echo "[+] Creating Pods from config.yaml"
-
-python3 src/structure.py
-kubectl apply -f config/config.yaml
-
-echo "[+] Finished"

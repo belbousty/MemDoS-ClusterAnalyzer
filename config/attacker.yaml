@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: podName
-  namespace: namespace
+  namespace: default
   annotations:
     attackType: "attack"
     duration: xDration # duration of the attack

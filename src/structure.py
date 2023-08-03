@@ -2,9 +2,10 @@ import yaml
 import json
 import utils
 import sys
+import argparse
 
-def num_node():
-    with open('structure.json', 'r') as json_file:
+def num_node(file):
+    with open(file, 'r') as json_file:
         data = json.load(json_file)
     num = 1
     for info in data:
@@ -13,11 +14,8 @@ def num_node():
                 num = int(pod['node'])
     return num
 
-cursor = {}
-for i in range(num_node()):
-    cursor[str(i + 1)] = {'attacker': 1, 'victim' : 1}
 
-def get_pod_name(role, node):
+def get_pod_name(cursor, role, node):
     return role + node + f'{cursor[node][role]}'
     
 
@@ -27,14 +25,18 @@ def get_node_name(node_number):
         return node_name
     return node_name + f"-m0{node_number}"
 
-def change_values(yaml_data ,pod, role):
+def change_values(yaml_data ,pod, role, cursor):
     yaml_data['spec']['nodeName'] = get_node_name(pod['node'])
-    yaml_data['metadata']['name'] = get_pod_name(role, pod['node'])
+    yaml_data['metadata']['name'] = get_pod_name(cursor, role, pod['node'])
 
-def get_full_json():
-    with open('structure.json', 'r') as json_file:
+def get_full_json(file):
+    with open(file, 'r') as json_file:
         data = json.load(json_file)
     
+    cursor = {}
+    for i in range(num_node(file)):
+        cursor[str(i + 1)] = {'attacker': 1, 'victim' : 1}
+
     with open('config/config.yaml', 'w') as config:
         for attacker in data['attackers']:
             with open(f'config/attacker.yaml', 'r') as att:
@@ -46,7 +48,7 @@ def get_full_json():
             yaml_data['metadata']['annotations']['attackType'] = attacker['attackType']
             yaml_data['metadata']['annotations']['duration'] = attacker['duration']
             yaml_data['metadata']['annotations']['start'] = attacker['start']
-            change_values(yaml_data, attacker, 'attacker')
+            change_values(yaml_data, attacker, 'attacker', cursor)
             cursor[attacker['node']]['attacker'] += 1
             yaml.dump(yaml_data, config, sort_keys=False, default_flow_style=None) 
             config.write('\n---\n')
@@ -71,7 +73,7 @@ def get_full_json():
                     print(f"    - {benchmark}")
                 sys.exit()
             yaml_data['metadata']['annotations']['benchmark'] = victim['benchmark']
-            change_values(yaml_data, victim, 'victim')
+            change_values(yaml_data, victim, 'victim', cursor)
             cursor[victim['node']]['victim'] += 1
             yaml.dump(yaml_data, config, sort_keys=False, default_flow_style=None) 
             config.write('\n---\n')    
@@ -80,4 +82,8 @@ def get_full_json():
 
 
 if __name__ == '__main__':
-    get_full_json()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--json", help="json file path", default= 'structure.json')
+    args = parser.parse_args()
+
+    get_full_json(args.json)
