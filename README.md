@@ -73,7 +73,14 @@ To run it with Minikube:
 # launching experiment in 2 minutes
     python3 src/launch.py  --duration 2
 
+# launching experiment without any attacks (without changing the json file)
+    python3 src/launch.py  --duration 2 --no-attacks
 ```
+# Generate figures showing statistics of victim machines during the experiment process
+```console
+    python3 src/figures
+```
+
 # Version Requirements
 ```console
 ## Docker version 20.10.24

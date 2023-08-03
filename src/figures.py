@@ -54,7 +54,7 @@ def get_stats_load(file: str, stat):
     fig, ax = plt.subplots()
     files = [file, file+"-no-attacks"]
     colors = ['red', 'green']
-    labels = ['with runing attacks', 'without any attacks']
+    labels = ['with running attacks', 'without any attacks']
     markers = ['s', 'o']
     ymax = 0
     for f, color, label, marker in zip(files,colors,labels, markers):
@@ -73,7 +73,7 @@ def get_stats_load(file: str, stat):
     # ax.fill_betweenx(y=[0, ymax], x1=60, x2=240, color='lightblue', alpha=0.3, label='Attack Period')
     if (stat == 'time'):
         plt.title(f"App run time for {file}")
-        plt.ylabel("App Execution time  (s)")
+        plt.ylabel("App execution time  (s)")
     elif (stat == 'LLC'):
         plt.title(f"LLC hits for {file}")
         plt.ylabel("LLC hits")
