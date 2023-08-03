@@ -2,53 +2,36 @@ This repository helps launching a N node cluster with x number of attackers an y
 # Specify pods in structure.json
 ```console
 # You should specify exactly the values required in structure.json
-# It is necessary for "type" to be either "attacker" or "victim" 
-# The image is either  "docker.io/library/attacker:0.0.1" or "docker.io/library/hibench:0.0.1"
-# To check minikube images:  minikube image list
-# Example:  
-    {
-        "type": "attacker",
-        "name": "attacker00",
-        "nodeName": "minikube",
-        "attackType": "llc",
-        "duration": "2", ## The attack will take 2 minutes
-        "start": "1", ## The attack will start exactly after the first minute of the total duration of the experiment
-        "image" : "docker.io/library/attacker:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "2000Mi"    
-            }
-        ]
-    }
 # AttackType should be either 'llc' or 'lock'
-# Example for the victim: 
+# Example:
     {
-        "type": "victim",
-        "name": "victim00",
-        "nodeName": "minikube",
-        "workload": "ml", ## Specify the workload 
-        "benchmark": "kmeans", ## Specify the benchmark
-        "image" : "docker.io/library/hibench:0.0.1",
-        "limits" : [
-            {
-            "cpu": "2000m",
-            "memory": "32000Mi"    
-            }
-        ],
-        "requests" :[
-            {
-                "cpu": "800m",
-                "memory": "4000Mi"   
-            }
-        ]
+    "attackers": [ 
+        {
+            "node": "1",
+            "attackType": "llc",
+            "duration": "15",
+            "start": "0"
+        },
+        {
+            "node": "2",
+            "attackType": "lock",
+            "duration": "15",
+            "start": "0"
+        }],
+
+    "victims": [{
+            "node": "1",
+            "workload": "ml",
+            "benchmark": "kmeans"
+        },
+        {
+            "node": "2",
+            "workload": "ml",
+            "benchmark": "kmeans"
+        }]
     }
+
+# NB : in case other changes are required, please refer to  config/config.yaml
 # check "https://github.com/Intel-bigdata/HiBench/" for workloads and benchmarks
 ```
 

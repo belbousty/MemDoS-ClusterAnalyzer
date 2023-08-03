@@ -10,14 +10,11 @@ spec:
   nodeName: nodeName
   containers:
   - name: pod
-    image: podImage
-    command: ["/bin/sh"]
-    args: ["-c", "service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep 30; done;"]
+    image: docker.io/library/hibench:0.0.1
+    command: [/bin/sh]
+    args: [-c, service ssh restart; /root/run_dfs.sh; /bin/bash; while true; do sleep
+        30; done;]
     imagePullPolicy: IfNotPresent
     resources:
-      limits:
-        memory: memoryLimit
-        cpu: cpuLimit
-      requests: 
-        memory: memoryRequests
-        cpu: cpuRequests
+      limits: {memory: 32000Mi, cpu: 2000m}
+      requests: {memory: 4000Mi, cpu: 800m}
