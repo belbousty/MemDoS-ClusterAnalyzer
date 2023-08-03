@@ -1,3 +1,4 @@
+import utils
 import matplotlib.pyplot as plt
 import re 
 
@@ -26,8 +27,10 @@ def extract(stat :str, victim: str):
         lines = f.readlines()
     if (stat == 'time'):
         pattern = r"(\d+\.\d+) seconds time elapsed"
-    else:
-        pattern = f"(\d+)\s+{stat}" 
+    elif stat == 'LLC':
+        pattern = r"^\s+(\d+)\s+LLC\s*$" 
+    elif stat == 'LLC-misses':
+        pattern = r"(\d+)\s+LLC-misses"
     stats = []
     for line in lines:
         matches = re.findall(pattern, line)
@@ -36,7 +39,7 @@ def extract(stat :str, victim: str):
     return stats
 
 
-def get_stats_load(file: str):
+def get_stats_load(file: str, stat):
     '''
     Plot statistics for a specific victim
     
@@ -47,47 +50,66 @@ def get_stats_load(file: str):
     None
     
     '''
-    stats =['LLC','LLC-misses', 'time']
-    # total = extract(stats[0], file)
-    # LLC = [total[0]]
-    # for  i in range(2,len(total),2):
-    #     LLC.append(total[i])
-    
-    # for i in range(0,len(LLC)):
-    #     plt.bar(i, LLC[i], linestyle='-', color='b')
-    
-    # misses = extract(stats[1], file)
-    # for i in range(0,len(misses)):    
-    #     plt.bar(i, misses[i], linestyle='-', color='red')
-    # plt.xticks([], [])
-    # plt.title(f"LLC stats ({file})")
-    # plt.show()
-
-    # plot execution time of the app during experience
+    stats =['LLC','LLC-misses']
     fig, ax = plt.subplots()
     files = [file, file+"-no-attacks"]
     colors = ['red', 'green']
     labels = ['with runing attacks', 'without any attacks']
-    for file, color, label in zip(files,colors,labels):
-        time = extract(stats[2], file)
+    markers = ['s', 'o']
+    ymax = 0
+    for f, color, label, marker in zip(files,colors,labels, markers):
+        stats = extract(stat, f)
+        stats.insert(0,0)
+        time = extract('time', f)
         time.insert(0,0)
         ctime = cumulative_time(time)
-        ax.plot(ctime, time,marker='o', color=color, label=label)
-        ax.fill_between(ctime, time, color=color,  alpha=0.5)
+        ax.plot(ctime, stats,marker=marker, color=color, label=label)
+        ax.fill_between(ctime, stats, color=color,  alpha=0.5)
+        if (max(stats) > ymax):
+            ymax = max(stats)
+    # ax.vlines(x = 0,ymin=0, ymax=ymax, color = 'b')
+    # ax.vlines(x = 300, ymin=0, ymax=ymax, color = 'b')
 
-    #plt.title(f"App run time {file}")
-    plt.ylabel("App Execution time  (s)")
+    # ax.fill_betweenx(y=[0, ymax], x1=60, x2=240, color='lightblue', alpha=0.3, label='Attack Period')
+    if (stat == 'time'):
+        plt.title(f"App run time for {file}")
+        plt.ylabel("App Execution time  (s)")
+    elif (stat == 'LLC'):
+        plt.title(f"LLC hits for {file}")
+        plt.ylabel("LLC hits")
+    elif (stat == 'LLC-misses'):
+        plt.title(f"LLC misses for {file}")
+        plt.ylabel("LLC misses")
     plt.xlabel("Experience time (s)")
-    plt.title("App Run Time")
     plt.legend()
     plt.show()
 
+def pies(file):
+    stats =['LLC','LLC-misses']
+    llc = extract(stats[0], file)
+    llc_misses = extract(stats[1], file)
+    llc_m = sum(llc)/len(llc)
+    llc_misses_m = sum(llc_misses)/len(llc_misses)
+    stats = [llc_m, llc_misses_m]
+    colors = ['blue', 'orange']
+    explode = (0.1, 0) 
+    labels = ['LLC hist', 'LLC misses']
+    plt.pie(stats, explode=explode, labels=labels, colors=colors,
+        autopct='%1.1f%%', shadow=True, startangle=140)
+    plt.title(f'LLC stats for {file}')
+    plt.show()
 
 
-
-
+def main():
+    pods = utils.get_pod_names()
+    for pod in pods:
+        if (utils.check_pod_name(pod, 'victim')):
+            get_stats_load(pod, 'time')
+            get_stats_load(pod, 'LLC-misses')
+            get_stats_load(pod, 'LLC')
+            pies(pod)
+            pies(pod+'-no-attacks')
 
 if __name__ == '__main__' :
-    get_stats_load('victim00')
-    #get_stats_load('victim10')
+    main()
     pass

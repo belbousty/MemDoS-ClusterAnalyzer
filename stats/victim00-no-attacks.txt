@@ -1,56 +1,210 @@
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         102864037      LLC                                                         
-          25290795      LLC-misses                # [31m  24.59%[m of all LL-cache hits   
+         114285695      LLC                                                         
+          30222583      LLC-misses                # [31m  26.44%[m of all LL-cache hits   
 
-      31.899776969 seconds time elapsed
+      30.010002182 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         108975422      LLC                                                         
-          27599094      LLC-misses                # [31m  25.33%[m of all LL-cache hits   
+         114840292      LLC                                                         
+          32317533      LLC-misses                # [31m  28.14%[m of all LL-cache hits   
 
-      33.037306639 seconds time elapsed
+      30.835611123 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         119779213      LLC                                                         
-          34643887      LLC-misses                # [31m  28.92%[m of all LL-cache hits   
+         108325259      LLC                                                         
+          30042127      LLC-misses                # [31m  27.73%[m of all LL-cache hits   
 
-      51.078745046 seconds time elapsed
+      30.652368030 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         107670766      LLC                                                         
-          30454230      LLC-misses                # [31m  28.28%[m of all LL-cache hits   
+         109369579      LLC                                                         
+          26302795      LLC-misses                # [31m  24.05%[m of all LL-cache hits   
 
-      39.129232656 seconds time elapsed
+      25.017468598 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         114008878      LLC                                                         
-          29862985      LLC-misses                # [31m  26.19%[m of all LL-cache hits   
+         113731253      LLC                                                         
+          28510511      LLC-misses                # [31m  25.07%[m of all LL-cache hits   
 
-      36.745472468 seconds time elapsed
+      30.407071139 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         110020248      LLC                                                         
-          27502400      LLC-misses                # [31m  25.00%[m of all LL-cache hits   
+         107149544      LLC                                                         
+          26331837      LLC-misses                # [31m  24.57%[m of all LL-cache hits   
 
-      33.214236621 seconds time elapsed
+      24.190639475 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         114152717      LLC                                                         
-          31167693      LLC-misses                # [31m  27.30%[m of all LL-cache hits   
+         113233976      LLC                                                         
+          29724647      LLC-misses                # [31m  26.25%[m of all LL-cache hits   
 
-      48.669191017 seconds time elapsed
+      27.803360890 seconds time elapsed
 ----------------
 Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
 
-         103664540      LLC                                                         
-          26679853      LLC-misses                # [31m  25.74%[m of all LL-cache hits   
+         111595971      LLC                                                         
+          30468445      LLC-misses                # [31m  27.30%[m of all LL-cache hits   
 
-      35.806373765 seconds time elapsed
+      28.531968824 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         104664809      LLC                                                         
+          26298704      LLC-misses                # [31m  25.13%[m of all LL-cache hits   
+
+      23.887167656 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         109643592      LLC                                                         
+          32501771      LLC-misses                # [31m  29.64%[m of all LL-cache hits   
+
+      27.462350345 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         110225803      LLC                                                         
+          32940519      LLC-misses                # [31m  29.88%[m of all LL-cache hits   
+
+      29.585276633 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         103233155      LLC                                                         
+          26465895      LLC-misses                # [31m  25.64%[m of all LL-cache hits   
+
+      28.895919001 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         114810514      LLC                                                         
+          28048827      LLC-misses                # [31m  24.43%[m of all LL-cache hits   
+
+      29.992251954 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         109324234      LLC                                                         
+          29316095      LLC-misses                # [31m  26.82%[m of all LL-cache hits   
+
+      33.052419313 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         107908173      LLC                                                         
+          30470763      LLC-misses                # [31m  28.24%[m of all LL-cache hits   
+
+      41.956605918 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         114972323      LLC                                                         
+          29017049      LLC-misses                # [31m  25.24%[m of all LL-cache hits   
+
+      29.906028015 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         108798377      LLC                                                         
+          28686320      LLC-misses                # [31m  26.37%[m of all LL-cache hits   
+
+      28.296011285 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         109925991      LLC                                                         
+          29062057      LLC-misses                # [31m  26.44%[m of all LL-cache hits   
+
+      28.551237757 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         109356038      LLC                                                         
+          27018681      LLC-misses                # [31m  24.71%[m of all LL-cache hits   
+
+      29.232201129 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         104599279      LLC                                                         
+          28920639      LLC-misses                # [31m  27.65%[m of all LL-cache hits   
+
+      29.353148823 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         110019670      LLC                                                         
+          28403389      LLC-misses                # [31m  25.82%[m of all LL-cache hits   
+
+      29.845566988 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         116137987      LLC                                                         
+          31061913      LLC-misses                # [31m  26.75%[m of all LL-cache hits   
+
+      30.836462146 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         107489749      LLC                                                         
+          25029760      LLC-misses                # [31m  23.29%[m of all LL-cache hits   
+
+      30.658749394 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         107419774      LLC                                                         
+          27173160      LLC-misses                # [31m  25.30%[m of all LL-cache hits   
+
+      28.659552094 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         109339762      LLC                                                         
+          26569775      LLC-misses                # [31m  24.30%[m of all LL-cache hits   
+
+      28.054137447 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         111808773      LLC                                                         
+          27416558      LLC-misses                # [31m  24.52%[m of all LL-cache hits   
+
+      29.197244701 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         110412002      LLC                                                         
+          25699432      LLC-misses                # [31m  23.28%[m of all LL-cache hits   
+
+      27.746777581 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         117021050      LLC                                                         
+          29500373      LLC-misses                # [31m  25.21%[m of all LL-cache hits   
+
+      29.615856444 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         112359685      LLC                                                         
+          26608928      LLC-misses                # [31m  23.68%[m of all LL-cache hits   
+
+      28.797590124 seconds time elapsed
+----------------
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         115023326      LLC                                                         
+          28632259      LLC-misses                # [31m  24.89%[m of all LL-cache hits   
+
+      30.017732571 seconds time elapsed
 ----------------

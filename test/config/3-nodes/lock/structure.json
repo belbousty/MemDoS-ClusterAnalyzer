@@ -5,7 +5,7 @@
         "name": "attacker00",
         "namespace": "default",
         "nodeName": "minikube",
-        "attackType": "llc",
+        "attackType": "lock",
         "duration": "15",
         "start": "0",
         "image" : "docker.io/library/attacker:0.0.1",
@@ -48,7 +48,7 @@
         "name": "attacker10",
         "namespace": "default",
         "nodeName": "minikube-m02",
-        "attackType": "llc",
+        "attackType": "lock",
         "duration": "15",
         "start": "0",
         "image" : "docker.io/library/attacker:0.0.1",
@@ -72,6 +72,49 @@
         "workload": "ml",
         "benchmark": "kmeans",
         "nodeName": "minikube-m02",
+        "image" : "docker.io/library/hibench:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "800m",
+                "memory": "4000Mi"   
+            }
+        ]
+    },
+    {
+        "type": "attacker",
+        "name": "attacker10",
+        "namespace": "default",
+        "nodeName": "minikube-m03",
+        "attackType": "lock",
+        "duration": "15",
+        "start": "0",
+        "image" : "docker.io/library/attacker:0.0.1",
+        "limits" : [
+            {
+            "cpu": "2000m",
+            "memory": "32000Mi"    
+            }
+        ],
+        "requests" :[
+            {
+                "cpu": "800m",
+                "memory": "4000Mi"   
+            }
+        ]
+    },
+    {
+        "type": "victim",
+        "name": "victim10",
+        "namespace": "default",
+        "workload": "ml",
+        "benchmark": "kmeans",
+        "nodeName": "minikube-m03",
         "image" : "docker.io/library/hibench:0.0.1",
         "limits" : [
             {

@@ -47,7 +47,7 @@
         "type": "attacker",
         "name": "attacker10",
         "namespace": "default",
-        "nodeName": "minikube-m02",
+        "nodeName": "minikube",
         "attackType": "llc",
         "duration": "15",
         "start": "0",
@@ -71,7 +71,7 @@
         "namespace": "default",
         "workload": "ml",
         "benchmark": "kmeans",
-        "nodeName": "minikube-m02",
+        "nodeName": "minikube",
         "image" : "docker.io/library/hibench:0.0.1",
         "limits" : [
             {
