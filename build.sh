@@ -1,11 +1,12 @@
 #!/bin/bash
 
 re='^[0-9]+$'
-if [ $#  -ne  3 ]
+if [ $#  -ne  2 ]
 then
-    echo -e "[-] Please specify number of nodes, cpus and the size of the memory for each node\ ./build [NUM_NODES] [NUM_CPUS] [MEMORY]"
+    echo -e "[-] Please specify number cpus and the size of the memory for each node\ ./build [NUM_CPUS] [MEMORY]"
     exit
 fi
+
 for arg in $@
 do 
     if ! [[ $arg =~ $re ]]
@@ -15,19 +16,14 @@ do
     fi
 done 
 
-# Create a 2-node cluster
 minikube stop
+
 if ! minikube status &> /dev/null
-then
-    echo "[+] Checking Minikube existing nodes"
-    num_nodes=$(minikube node list | wc -l)
-    if [ $num_nodes -ne $[$1+2] ]
-    then 
-        echo "[+] Starting Minikube with $1 nodes, $2 cpus $3 MB of memory each"
-        minikube start --nodes "$1" --cpus "$2" --memory "$3"
-    else
-        echo "[+] Minikube is already runing with $1 nodes"
-    fi
+then 
+    echo "[+] Starting Minikube with 1 nodes, $1 cpus $2 MB of memory each"
+    minikube start --nodes 1 --cpus "$1" --memory "$2"
+else
+    echo "[+] Minikube is already runing"
 fi
 
 # build or pull necessary images

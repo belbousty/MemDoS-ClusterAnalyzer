@@ -2,19 +2,13 @@
     "attackers": [ 
         {
             "node": "1",
-            "attackType": "lock",
+            "attackType": "llc",
             "duration": "5",
             "start": "0"
         },
         {
-            "node": "2",
-            "attackType": "lock",
-            "duration": "5",
-            "start": "0"
-        },
-        {
-            "node": "3",
-            "attackType": "lock",
+            "node": "1",
+            "attackType": "llc",
             "duration": "5",
             "start": "0"
         }],
@@ -26,11 +20,6 @@
         },
         {
             "node": "2",
-            "workload": "ml",
-            "benchmark": "kmeans"
-        },
-        {
-            "node": "3",
             "workload": "ml",
             "benchmark": "kmeans"
         }]

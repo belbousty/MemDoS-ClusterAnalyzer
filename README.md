@@ -40,9 +40,9 @@ This repository helps launching a N node cluster with x number of attackers an y
 To run it with Minikube:
 ```console
 # Build the cluster
-    ./build.sh [NUM_NODES] [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
-# Example : creating 2-node cluster with 3 cpus and 20000MB each
-    ./build.sh 2 3 20000
+    ./build.sh  [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
+# Example : creating 1 node cluster with 3 cpus and 20000MB each
+    ./build.sh 3 20000
 # Run the experiment
     ./run.sh [duration]
 # make sure the duration is superior than the maximum attack duration
@@ -54,10 +54,9 @@ We provided 3 tests each with different node characteristics and type of attacks
 # If the number of node or memory specifics of the existing cluster does not match those of the chosen test
 # Then restart with the appropriate spec
 # Otherwise: 
-    ./run.sh [TEST] [ATTACK] [DURATION]
+    ./run.sh [TEST] [DURATION]
     
-    [TEST] : one-node, two-nodes, three-nodes
-    [ATTACK] : llc, lock
+    [TEST]: name of the json file (without the extension)
 ```
 # Migration 
 ```console

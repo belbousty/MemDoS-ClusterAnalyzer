@@ -1,37 +1,23 @@
 #!/bin/bash
 
-# Create a function that delete existing pods, and nodes if needed
 function count_minikube_nodes() {
     local node_count=$(minikube node list | wc -l)
     echo "$((node_count))"
 }
 
-function node_number() {
-    file=$1
-    if [ $file == "one-node" ] 
-    then 
-        echo 1
-    elif [ $file == "two-nodes" ]
-    then 
-        echo 2
-    elif [ $file == "three-nodes" ]
+function files_in_test() {
+    if [ -d test ]
     then
-        echo 3
-    else 
-        echo "[-] The name of the test is wrong"
-        exit
+
+        for file in test/* 
+        do 
+            echo "$(basename "$file")"
+        done
     fi
 }
-# applying configuration
-if [ $# == 1 ]
-then
-    exit
-    echo "[+] Creating Pods from config.yaml"
 
-    python3 src/structure.py --json structure.json
-    kubectl apply -f config/config.yaml
-
-    echo "[+] Finished"
+function apply_experience() {
+    duration=$1
     
     echo "[+] Starting the experience with attacks"
     python3 src/launch.py --duration $1
@@ -43,35 +29,65 @@ then
 
     echo "[+] Showing figures"
     python3 src/figures.py
+}
 
-elif [ $# == 3 ]
+function adjust_nodes() {
+    necessary_nodes=$1
+    num_nodes=$2
+    needed_nodes=$(($num_nodes - $necessary_nodes))
+    if [ $needed_nodes -lt 0 ]
+    then
+        echo "[+] Adding necessary nodes"
+        for ((i = 1; i <= -needed_nodes; i++)) 
+        do 
+            minikube node add
+        done
+    else
+        node_list=$(minikube node list | cut -f1) 
+        nodes_to_delete=$(($num_nodes - $necessary_nodes))
+        nodes_to_delete_list=$(echo "$node_list" | tail -n $nodes_to_delete)
+
+        for node in $nodes_to_delete_list
+        do
+            echo "[+] deleting $node"
+            minikube node stop $node
+            minikube node delete $node
+        done
+    fi
+}
+
+
+if [ $# == 1 ]
 then
-    necessary_nodes=$(node_number $1)
-    node_num=$(count_minikube_nodes)
+    exit
+    echo "[+] Creating Pods from config.yaml"
 
+    python3 src/structure.py --json structure.json
+    kubectl apply -f config/config.yaml
+
+    echo "[+] Finished"
+    
+    apply_experience $1
+
+elif [ $# == 2 ]
+then
+    necessary_nodes=$1
+    node_num=$(count_minikube_nodes)
     if [ $necessary_nodes != $node_num ]
     then 
-        echo "[+] Inappropriate number of nodes. Please restart the cluster and rebuild properly"
-        exit
+        echo "[-] Inappropriate number of nodes."
+        adjust_nodes $necessary_nodes $node_num
     fi
-    echo "[+] Launching the $1 test"
-    echo "[+] Creating Pods from test/config/$1/$2/structure.json"
 
-    python3 src/structure.py --json test/config/$1/$2/structure.json
+    echo "[+] Launching test"
+    echo "[+] Creating Pods from test/$1.json"
+
+    python3 src/structure.py --json test/$1.json
     kubectl apply -f config/config.yaml
 
     echo "[+] Finished"
 
-    echo "[+] Starting the experience with attacks"
-    python3 src/launch.py --duration $3
-    echo "[+] Experience ended with attacks"
-
-    echo "[+] Starting the experience with attacks"
-    python3 src/launch.py --duration $3 --no-attacks
-    echo "[+] Experience ended with attacks"
-
-    echo "[+] Showing figures"
-    python3 src/figures.py
+    apply_experience $2
 else
-    echo "[-] Please execute without any parameters or specify the test and the attack type"
+    echo "[-] Enter the correct parameters"
 fi
