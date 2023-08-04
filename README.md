@@ -44,11 +44,11 @@ To run it with Minikube:
 # Example : creating 1 node cluster with 3 cpus and 20000MB each
     ./build.sh 3 20000
 # Run the experiment
-    ./run.sh [duration]
+    ./run.sh [Duratioon]
 # make sure the duration is superior than the maximum attack duration
 ```
 
-# Test
+# Tests
 We provided 3 tests each with different node characteristics and type of attacks.
 ```console
 # If the number of node or memory specifics of the existing cluster does not match those of the chosen test
@@ -71,10 +71,6 @@ We provided 3 tests each with different node characteristics and type of attacks
 
 # launching experiment without any attacks (without changing the json file)
     python3 src/launch.py  --duration 2 --no-attacks
-```
-# Generate figures showing statistics of victim machines during the experiment process
-```console
-    python3 src/figures
 ```
 
 # Version Requirements
