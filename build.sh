@@ -16,6 +16,7 @@ do
 done 
 
 # Create a 2-node cluster
+minikube stop
 if ! minikube status &> /dev/null
 then
     echo "[+] Checking Minikube existing nodes"

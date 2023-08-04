@@ -3,19 +3,19 @@
         {
             "node": "1",
             "attackType": "llc",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         },
         {
             "node": "2",
             "attackType": "llc",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         },
         {
             "node": "3",
             "attackType": "llc",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         }],
 

@@ -43,8 +43,22 @@ To run it with Minikube:
     ./build.sh [NUM_NODES] [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
 # Example : creating 2-node cluster with 3 cpus and 20000MB each
     ./build.sh 2 3 20000
+# Run the experiment
+    ./run.sh [duration]
+# make sure the duration is superior than the maximum attack duration
 ```
 
+# Test
+We provided 3 tests each with different node characteristics and type of attacks.
+```console
+# If the number of node or memory specifics of the existing cluster does not match those of the chosen test
+# Then restart with the appropriate spec
+# Otherwise: 
+    ./run.sh [TEST] [ATTACK] [DURATION]
+    
+    [TEST] : one-node, two-nodes, three-nodes
+    [ATTACK] : llc, lock
+```
 # Migration 
 ```console
 # Migrate pod to node
@@ -78,6 +92,6 @@ To run it with Minikube:
 # Fixed issues
 Allowing perf stat capability:
 ```console
-# On the local machine
+# On the local machine as root
     echo -1 > /proc/sys/kernel/perf_event_paranoid
 ```

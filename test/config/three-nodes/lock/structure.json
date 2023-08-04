@@ -3,19 +3,19 @@
         {
             "node": "1",
             "attackType": "lock",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         },
         {
             "node": "2",
             "attackType": "lock",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         },
         {
             "node": "3",
             "attackType": "lock",
-            "duration": "15",
+            "duration": "5",
             "start": "0"
         }],
 
