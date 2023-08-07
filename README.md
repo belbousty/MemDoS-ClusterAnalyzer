@@ -58,6 +58,9 @@ We provided 3 tests each with different node characteristics and type of attacks
     ./run.sh [TEST] [DURATION]
     
     [TEST]: name of the json file (without the extension)
+    
+# At the end, perf results will be stored in stats in both csv and text format 
+# And figures of these results are stored in "figures" 
 ```
 # Migration 
 ```console
@@ -82,6 +85,9 @@ We provided 3 tests each with different node characteristics and type of attacks
 # Install python libraries
     pip install json
     pip install pyyaml
+    pip install matplotlib
+    pip install pandas
+    
 # Installing perf
     sudo apt install linux-tools
 ```

@@ -44,8 +44,12 @@ def run_victims_apps(duration, pod_name, NoAttack):
     filename = pod_name
     if (NoAttack == True):
         filename += "-no-attacks"
-     
-    with open(f"stats/{filename}.txt", "w") as output_file:
+    
+    path = "stats/txt"
+    if not os.path.exists(path):
+        os.makedirs(path, exist_ok=True)
+
+    with open(f"stats/txt/{filename}.txt", "w") as output_file:
         start_time = time.time()
         while (time.time() - start_time) < (duration * 60):
             res = subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- {utils.perf()} /HiBench/bin/workloads/{workload}/{benchmark}/hadoop/run.sh"),stdout=subprocess.PIPE, stderr=subprocess.PIPE)

@@ -43,7 +43,7 @@ def get_pod_status(pod_name, pod_namespace = "default"):
     pod = api_client.read_namespaced_pod(pod_name, pod_namespace)
     return pod.status.conditions[-1].message
 
-def is_in_nodes(node):
+def is_in_nodes(node: str):
     '''
     Check if 'node' exists
 
@@ -144,7 +144,7 @@ def check_attack_type(attack_type: str):
         return True
     return False
 
-def check_workload(workload):
+def check_workload(workload: str):
     '''
     Check if the workload set is correct
 
@@ -192,7 +192,7 @@ def check_pod_name(pod_name: str, role: str):
 
    
 
-def get_experiment_info(info, namespace="default"):
+def get_experiment_info(info: str, namespace="default"):
     '''
     get a specific information about the experiment
 
@@ -226,7 +226,7 @@ def get_experiment_info(info, namespace="default"):
                 }
     return infos
 
-def exec_command_in_pod(pod_name, command, namespace='default'):
+def exec_command_in_pod(pod_name: str, command: str, namespace='default'):
     '''
     Execute command in a specific pod
     
@@ -267,7 +267,7 @@ def get_pod_names(namespace='default'):
     return pods
 
 
-def extract_performance(output):
+def extract_performance(output: str):
     '''
     Extract only the perf performance output 
 
@@ -292,3 +292,21 @@ def perf():
     perf command (str)
     '''
     return f"./root/perf stat -e LLC,LLC-misses"
+
+def cumulative_time(time):
+    '''
+    Count cumulative time for a given array
+
+    Parameters:
+    time:  array of time
+
+    Returns:
+    array
+    '''
+    cumulative_times = [time[0]]
+    for i in range(1, len(time)):
+        cumulative_time = 0
+        for j in range(0, i+1):
+            cumulative_time += float(time[j])
+        cumulative_times.append(cumulative_time)
+    return cumulative_times

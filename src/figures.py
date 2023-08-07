@@ -1,17 +1,7 @@
 import utils
 import matplotlib.pyplot as plt
 import pandas as pd
-import re 
-
-
-def cumulative_time(time):
-    cumulative_times = [time[0]]
-    for i in range(1, len(time)):
-        cumulative_time = 0
-        for j in range(0, i+1):
-            cumulative_time += float(time[j])
-        cumulative_times.append(cumulative_time)
-    return cumulative_times
+import re, os
 
 def extract(stat :str, victim: str):
     '''
@@ -24,7 +14,7 @@ def extract(stat :str, victim: str):
     Returns:
     statistic property values during the experience
     '''
-    with open(f"stats/{victim}.txt", "r") as f:
+    with open(f"stats/txt/{victim}.txt", "r") as f:
         lines = f.readlines()
     if (stat == 'time'):
         pattern = r"(\d+\.\d+) seconds time elapsed"
@@ -40,7 +30,7 @@ def extract(stat :str, victim: str):
     return stats
 
 
-def get_stats_load(file: str, stat):
+def get_stats_load(file: str, stat: str):
     '''
     Plot statistics for a specific victim
     
@@ -62,7 +52,7 @@ def get_stats_load(file: str, stat):
         stats.insert(0,0)
         time = extract('time', f)
         time.insert(0,0)
-        ctime = cumulative_time(time)
+        ctime = utils.cumulative_time(time)
         ax.plot(ctime, stats,marker=marker, color=color, label=label)
         ax.fill_between(ctime, stats, color=color,  alpha=0.5)
 
@@ -95,6 +85,7 @@ def pies(file):
     plt.title(f'LLC stats for {file}')
     plt.savefig(f"figures/{file}.png")
 
+
 def save_csv_stats(file:str):
     labels = ['LLC-hits', 'LLC-misses', 'time']
     files = [file, file+'-no-attacks']
@@ -108,8 +99,10 @@ def save_csv_stats(file:str):
         csv_filename = f'stats/csv/{f}.csv'
         df.to_csv(csv_filename, index=False)
 
-    pass
 def main():
+    path = "figures"
+    if not os.path.exists(path):
+        os.makedirs(path, exist_ok=True)
     pods = utils.get_pod_names()
     for pod in pods:
         if (utils.check_pod_name(pod, 'victim')):
