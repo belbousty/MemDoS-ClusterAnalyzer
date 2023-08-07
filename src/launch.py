@@ -41,8 +41,6 @@ def run_victims_apps(duration, pod_name, NoAttack):
     app = utils.get_experiment_info('app')
     benchmark = app[pod_name]['benchmark']
     workload = app[pod_name]['workload']
-
-    print(f"[+] Running {workload} {benchmark} for {pod_name} for {duration} minutes\n")
     filename = pod_name
     if (NoAttack == True):
         filename += "-no-attacks"
@@ -54,7 +52,7 @@ def run_victims_apps(duration, pod_name, NoAttack):
             output_file.write(utils.extract_performance(res.stdout.decode().strip()))
             output_file.write("\n")
             output_file.write("----------------\n")
-    print(f"[+] Application ended for {pod_name}\n")
+
     
 
     
@@ -81,10 +79,8 @@ def launch_attacks(pod_name, attack):
     duration = utils.get_experiment_info('duration')
     pod_duration = int(duration[pod_name])*60
 
-    print(f"[+] Starting {pod_name} attack\n")
     subprocess.run(shlex.split(
                 f'kubectl exec -it {pod_name} -- /bin/sh -c "sleep {pod_start} && timeout {pod_duration} /root/{binary}"'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    print(f"[+] {pod_name} attack ended\n")
 
 
 def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
@@ -117,15 +113,18 @@ def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
                     )
             )
             threads.append(thread)
+
+    print("[+] Starting experiment")
     for thread in threads:
         thread.start()
     for thread in threads:
         thread.join()
+    print("[+] Experiment Ended")
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description=' Launch Experiment.')
-    parser.add_argument("--duration", type=int, help="Expirement duration in minutes", default= 10, required=True)
+    parser.add_argument("--duration", type=int, help="Expirement duration in minutes", required=True)
     parser.add_argument("--no-attacks", action="store_true", help="No attack will be launched")
 
     path = "stats"

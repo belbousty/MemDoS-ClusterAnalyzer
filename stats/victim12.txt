@@ -1,0 +1,7 @@
+Performance counter stats for '/HiBench/bin/workloads/ml/kmeans/hadoop/run.sh':
+
+         122151908      LLC                                                         
+          35616982      LLC-misses                # [31m  29.16%[m of all LL-cache hits   
+
+     317.322698221 seconds time elapsed
+----------------

@@ -71,7 +71,7 @@ then
 
 elif [ $# == 2 ]
 then
-    necessary_nodes=$1
+    necessary_nodes=$(jq -r ".nodes" test/$1.json)
     node_num=$(count_minikube_nodes)
     if [ $necessary_nodes != $node_num ]
     then 

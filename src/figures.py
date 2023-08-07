@@ -1,5 +1,6 @@
 import utils
 import matplotlib.pyplot as plt
+import pandas as pd
 import re 
 
 
@@ -56,7 +57,6 @@ def get_stats_load(file: str, stat):
     colors = ['red', 'green']
     labels = ['with running attacks', 'without any attacks']
     markers = ['s', 'o']
-    ymax = 0
     for f, color, label, marker in zip(files,colors,labels, markers):
         stats = extract(stat, f)
         stats.insert(0,0)
@@ -65,12 +65,7 @@ def get_stats_load(file: str, stat):
         ctime = cumulative_time(time)
         ax.plot(ctime, stats,marker=marker, color=color, label=label)
         ax.fill_between(ctime, stats, color=color,  alpha=0.5)
-        if (max(stats) > ymax):
-            ymax = max(stats)
-    # ax.vlines(x = 0,ymin=0, ymax=ymax, color = 'b')
-    # ax.vlines(x = 300, ymin=0, ymax=ymax, color = 'b')
 
-    # ax.fill_betweenx(y=[0, ymax], x1=60, x2=240, color='lightblue', alpha=0.3, label='Attack Period')
     if (stat == 'time'):
         plt.title(f"App run time for {file}")
         plt.ylabel("App execution time  (s)")
@@ -82,9 +77,10 @@ def get_stats_load(file: str, stat):
         plt.ylabel("LLC misses")
     plt.xlabel("Experience time (s)")
     plt.legend()
-    plt.show()
+    plt.savefig(f"figures/{file}-{stat}.png")
 
 def pies(file):
+    plt.figure()
     stats =['LLC','LLC-misses']
     llc = extract(stats[0], file)
     llc_misses = extract(stats[1], file)
@@ -93,17 +89,31 @@ def pies(file):
     stats = [llc_m, llc_misses_m]
     colors = ['blue', 'orange']
     explode = (0.1, 0) 
-    labels = ['LLC hist', 'LLC misses']
+    labels = ['LLC hits', 'LLC misses']
     plt.pie(stats, explode=explode, labels=labels, colors=colors,
         autopct='%1.1f%%', shadow=True, startangle=140)
     plt.title(f'LLC stats for {file}')
-    plt.show()
+    plt.savefig(f"figures/{file}.png")
 
+def save_csv_stats(file:str):
+    labels = ['LLC-hits', 'LLC-misses', 'time']
+    files = [file, file+'-no-attacks']
+    for f in files:
+        llc = extract('LLC', f)
+        llc_misses = extract('LLC-misses', f) 
+        time = extract('time', f)
+        stats = [llc, llc_misses, time]
+        data = {'Labels': labels, 'Stats': stats}
+        df = pd.DataFrame(data)
+        csv_filename = f'stats/csv/{f}.csv'
+        df.to_csv(csv_filename, index=False)
 
+    pass
 def main():
     pods = utils.get_pod_names()
     for pod in pods:
         if (utils.check_pod_name(pod, 'victim')):
+            save_csv_stats(pod)
             get_stats_load(pod, 'time')
             get_stats_load(pod, 'LLC-misses')
             get_stats_load(pod, 'LLC')

@@ -7,11 +7,7 @@ import argparse
 def num_node(file):
     with open(file, 'r') as json_file:
         data = json.load(json_file)
-    num = 1
-    for info in data:
-        for pod in data[info]:
-            if (int(pod['node']) > num):
-                num = int(pod['node'])
+    num = int(data['nodes'])
     return num
 
 

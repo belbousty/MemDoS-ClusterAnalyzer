@@ -5,6 +5,7 @@ This repository helps launching a N node cluster with x number of attackers an y
 # AttackType should be either 'llc' or 'lock'
 # Example:
     {
+    "nodes": "2
     "attackers": [ 
         {
             "node": "1",
@@ -66,11 +67,11 @@ We provided 3 tests each with different node characteristics and type of attacks
 ```
 # Start the experiment 
 ```console
-# launching experiment in 2 minutes
-    python3 src/launch.py  --duration 2
+# launching experiment
+    python3 src/launch.py  --duration [DURATION]
 
 # launching experiment without any attacks (without changing the json file)
-    python3 src/launch.py  --duration 2 --no-attacks
+    python3 src/launch.py  --duration [DURATION] --no-attacks
 ```
 
 # Version Requirements

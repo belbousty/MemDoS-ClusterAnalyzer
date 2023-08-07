@@ -1,4 +1,5 @@
 {
+    "nodes": "2",
     "attackers": [ 
         {
             "node": "1",
