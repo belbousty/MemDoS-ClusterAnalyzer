@@ -1,4 +1,6 @@
 import sys, threading, argparse
+import json, time
+import csv
 import utils
 
 def migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace = "default"):
@@ -28,31 +30,72 @@ def migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace = "default"
     
     while True:
         pod_terminated = utils.is_in_pods(pod_name)
-        if pod_terminated : 
+        if pod_terminated :
             continue
         else: 
             break
     print(f"[+] Migration done")
 
 
+def get_metrics_without_attack(namespace = 'default'):
+    pods = utils.get_pod_names(namespace)
+    pods_metrics = {}
+    for pod in pods:
+        if (utils.check_pod_name(pod, 'victim')):
+            pods_metrics[pod] = []
+            with open(f"stats/csv/{pod}-no-attacks.csv") as file:
+                csvreader = csv.reader(file)
+                next(csvreader)
+                for row in csvreader:
+                    avr = sum(json.loads(row[1]))/len(json.loads(row[1]))
+                    pods_metrics[pod].append({row[0]: f'{avr}'})
+    return pods_metrics
 
 
+def check_app_execution_time(pod):    
+    actual_time = 0
+    average_time = float(get_metrics_without_attack()[pod][0]['time'])
+    with open(f"stats/csv/{pod}.csv") as file:
+        csvreader = csv.reader(file)
+        next(csvreader)
+        for row in csvreader:
+            if (row[0] == 'time'):
+                actual_time = json.loads(row[1])[0]
+    if actual_time > average_time:
+        return True
+    return False
 
+def check_app_llc_misses(pod, average_llc_misses):
+    average_llc_misses = float(get_metrics_without_attack()[pod][0]['LLC-misses'])
+    file = f'stats/csv/{pod}.csv'
+    with open(file) as f:
+        csvreader = csv.reader(f)
+        next(csvreader)
+        for row in csvreader:
+            if (row[0] == 'LLC-misses'):
+                actual_llc_misses = json.loads(row[1])[0]
+            else : 
+                actual_llc_misses = 0
+    if (actual_llc_misses > average_llc_misses):
+        return True
+    return False
+
+def check_co_residence_time(pod, namespace='default'):
+    pods = utils.get_pod_names(namespace)
+    # #######
+    pass
+
+def victim_thread(pod):
+    while (1):
+        utils.prepare_victims_benchmarks(pod)
+        utils.run_victims_apps('Don`t matter', pod, False)
+        if (check_app_execution_time(pod)):
+            # Migrate
+            return True
+        if (check_app_llc_misses(pod)):
+            # Migrate
+            return True
 
 if __name__ == '__main__':
-    
-    parser = argparse.ArgumentParser(description=' Launch Experiment.')
-    parser.add_argument("--pod", help="Pod name", required=True)
-    parser.add_argument("--new-pod", help="New pod name", required=True)
-    parser.add_argument("--dest-node", help="Destination Node", required=True)
-    parser.add_argument("--namespace", help="Namespace", default='default')
-    args = parser.parse_args()
-
-    pod_name = args.pod
-    new_pod_name = args.new_pod
-    dest_node_name = args.dest_node
-    pod_namespace = args.namespace
-
-    
-    migrate_to(pod_name, new_pod_name, dest_node_name, pod_namespace)
+    print(get_metrics_without_attack())
 

@@ -1,7 +1,8 @@
 from kubernetes import client, config
 from kubernetes.stream import stream
-import sys, re
+import sys, re, time, subprocess, os
 import shlex
+
 
 config.load_kube_config()
 api_client = client.CoreV1Api()
@@ -310,3 +311,87 @@ def cumulative_time(time):
             cumulative_time += float(time[j])
         cumulative_times.append(cumulative_time)
     return cumulative_times
+
+
+def run_perf_command(output_file, pod_name, workload, benchmark):
+    res = subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- {perf()} /HiBench/bin/workloads/{workload}/{benchmark}/hadoop/run.sh"),stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output_file.write(extract_performance(res.stdout.decode().strip()))
+    output_file.write("\n")
+    output_file.write("----------------\n")
+
+def run_victims_apps(duration, pod_name, NoAttack, purpose='experiment'):
+    '''
+    launch victims apps repeatedly 
+
+    Parameters:
+    pod_name (str): the pod's name
+    attack (str): attack type (llc or lock)
+
+    Returns:
+    None
+    '''
+
+    app = get_experiment_info('app')
+    benchmark = app[pod_name]['benchmark']
+    workload = app[pod_name]['workload']
+    filename = pod_name
+    if (NoAttack == True):
+        filename += "-no-attacks"
+    
+    path = "stats/txt"
+    if not os.path.exists(path):
+        os.makedirs(path, exist_ok=True)
+
+    with open(f"stats/txt/{filename}.txt", "w") as output_file:
+        if purpose == 'experiment':
+            start_time = time.time()
+            while (time.time() - start_time) < (duration * 60):
+                run_perf_command(output_file, pod_name, workload, benchmark)
+        else :
+            run_perf_command(output_file, pod_name, workload, benchmark)
+
+def launch_attacks(pod_name, attack):
+    '''
+    launch attackers in attackers pods
+
+    Parameters:
+    pod_name (str): the pod's name
+    attack (str): attack type (llc or lock)
+
+    Returns:
+    None
+    '''
+    if (attack == 'llc'):
+        binary = 'llcCleansing'
+    else:
+        binary = 'atomicLocking'
+
+    start = get_experiment_info('start')
+    
+    pod_start = int(start[pod_name])*60
+
+    duration = get_experiment_info('duration')
+    pod_duration = int(duration[pod_name])*60
+
+    subprocess.run(shlex.split(
+                f'kubectl exec -it {pod_name} -- /bin/sh -c "sleep {pod_start} && timeout {pod_duration} /root/{binary}"'), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+def prepare_victims_benchmarks(pod_name: str):
+    '''
+    Executes prepare.sh of benchmarks for each victim  
+    
+    Parameters:
+    pod_name (str): the pod's name
+
+    Returns:
+    None
+
+    '''
+
+    app = get_experiment_info('app')
+    benchmark = app[pod_name]['benchmark']
+    workload = app[pod_name]['workload']
+
+    print(f"[+] Starting preparation for {workload} {benchmark} for {pod_name}")
+    subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- '/HiBench/bin/workloads/{workload}/{benchmark}/prepare/prepare.sh'"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    print(f"[+] Preparation Ended for {workload} {benchmark}")
