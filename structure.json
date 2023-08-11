@@ -1,20 +1,8 @@
 {
     "nodes": "2",
-    "attackers": [ 
+    "attackers": [],
+    "victims": [
         {
-            "node": "1",
-            "attackType": "llc",
-            "duration": "15",
-            "start": "0"
-        },
-        {
-            "node": "2",
-            "attackType": "lock",
-            "duration": "15",
-            "start": "0"
-        }],
-
-    "victims": [{
             "node": "1",
             "workload": "ml",
             "benchmark": "kmeans"
@@ -23,5 +11,6 @@
             "node": "2",
             "workload": "ml",
             "benchmark": "kmeans"
-        }]
+        }
+    ]
 }

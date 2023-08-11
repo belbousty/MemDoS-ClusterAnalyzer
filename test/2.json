@@ -1,14 +1,8 @@
 {   
-    "nodes" : "2",
+    "nodes" : "1",
     "attackers": [ 
         {
             "node": "1",
-            "attackType": "llc",
-            "duration": "5",
-            "start": "0"
-        },
-        {
-            "node": "2",
             "attackType": "llc",
             "duration": "5",
             "start": "0"
@@ -16,11 +10,6 @@
 
     "victims": [{
             "node": "1",
-            "workload": "ml",
-            "benchmark": "kmeans"
-        },
-        {
-            "node": "2",
             "workload": "ml",
             "benchmark": "kmeans"
         }]

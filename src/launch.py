@@ -29,9 +29,7 @@ def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
         if (utils.check_pod_name(pod_name, 'attacker') and NoAttacks == False):
             thread = threading.Thread(
                 target=utils.launch_attacks,
-                args=(pod_name,
-                      utils.get_experiment_info('attack')
-                    )
+                args=(pod_name,)
             )
             threads.append(thread)
 

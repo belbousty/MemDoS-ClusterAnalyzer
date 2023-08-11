@@ -1,37 +1,25 @@
 {
-    "nodes" : "1",
+    "nodes" : "2",
     "attackers": [ 
         {
             "node": "1",
             "attackType": "llc",
-            "duration": "20",
+            "duration": "5",
             "start": "0"
-        }, 
-        {
-            "node": "1",
+        },{
+            "node": "2",
             "attackType": "llc",
-            "duration": "20",
-            "start": "0"
-        },
-        {
-            "node": "1",
-            "attackType": "llc",
-            "duration": "20",
+            "duration": "5",
             "start": "0"
         }],
 
-    "victims": [{
-            "node": "1",
-            "workload": "ml",
-            "benchmark": "kmeans"
-        },
+    "victims": [
         {
             "node": "1",
             "workload": "ml",
             "benchmark": "kmeans"
-        },
-        {
-            "node": "1",
+        },{
+            "node": "2",
             "workload": "ml",
             "benchmark": "kmeans"
         }]

@@ -2,7 +2,7 @@ from kubernetes import client, config
 from kubernetes.stream import stream
 import sys, re, time, subprocess, os
 import shlex
-
+import pandas as pd
 
 config.load_kube_config()
 api_client = client.CoreV1Api()
@@ -350,7 +350,7 @@ def run_victims_apps(duration, pod_name, NoAttack, purpose='experiment'):
         else :
             run_perf_command(output_file, pod_name, workload, benchmark)
 
-def launch_attacks(pod_name, attack):
+def launch_attacks(pod_name):
     '''
     launch attackers in attackers pods
 
@@ -361,11 +361,11 @@ def launch_attacks(pod_name, attack):
     Returns:
     None
     '''
-    if (attack == 'llc'):
+    attack = get_experiment_info('attack')
+    if (attack[pod_name] == 'llc'):
         binary = 'llcCleansing'
     else:
         binary = 'atomicLocking'
-
     start = get_experiment_info('start')
     
     pod_start = int(start[pod_name])*60
@@ -392,6 +392,48 @@ def prepare_victims_benchmarks(pod_name: str):
     benchmark = app[pod_name]['benchmark']
     workload = app[pod_name]['workload']
 
-    print(f"[+] Starting preparation for {workload} {benchmark} for {pod_name}")
     subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- '/HiBench/bin/workloads/{workload}/{benchmark}/prepare/prepare.sh'"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    print(f"[+] Preparation Ended for {workload} {benchmark}")
+
+def extract(stat :str, victim: str):
+    '''
+    Extract values of statistic properties
+
+    Parameters:
+    stat (str): either 'time', 'LLC', 'LLC-misses'
+    victim (str): name of the victim pod (victimXX)
+
+    Returns:
+    statistic property values during the experience
+    '''
+    with open(f"stats/txt/{victim}.txt", "r") as f:
+        lines = f.readlines()
+    if (stat == 'time'):
+        pattern = r"(\d+\.\d+) seconds time elapsed"
+    elif stat == 'LLC':
+        pattern = r"^\s+(\d+)\s+LLC\s*$" 
+    elif stat == 'LLC-misses':
+        pattern = r"(\d+)\s+LLC-misses"
+    stats = []
+    for line in lines:
+        matches = re.findall(pattern, line)
+        if (len(matches)):
+            stats.append(float(matches[0]))
+    return stats
+
+
+def save_csv_stats(file:str):
+    labels = ['LLC-hits', 'LLC-misses', 'time']
+    files = [file, file+'-no-attacks']
+    for f in files:
+        llc = extract('LLC', f)
+        llc_misses = extract('LLC-misses', f) 
+        time = extract('time', f)
+        stats = [llc, llc_misses, time]
+        data = {'Labels': labels, 'Stats': stats}
+        df = pd.DataFrame(data)
+        csv_filename = f'stats/csv/{f}.csv'
+        df.to_csv(csv_filename, index=False)
+
+
+if __name__ == '__main__':
+    print(get_experiment_info('attack'))

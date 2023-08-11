@@ -59,7 +59,13 @@ function adjust_nodes() {
 
 if [ $# == 1 ]
 then
-    exit
+    necessary_nodes=$(jq -r ".nodes" structure.json)
+    node_num=$(count_minikube_nodes)
+    if [ $necessary_nodes != $node_num ]
+    then 
+        echo "[-] Inappropriate number of nodes."
+        adjust_nodes $necessary_nodes $node_num
+    fi
     echo "[+] Creating Pods from config.yaml"
 
     python3 src/structure.py --json structure.json
@@ -67,7 +73,7 @@ then
 
     echo "[+] Finished"
     
-    apply_experience $1
+    #apply_experience $1
 
 elif [ $# == 2 ]
 then
@@ -87,7 +93,7 @@ then
 
     echo "[+] Finished"
 
-    apply_experience $2
+    #apply_experience $2
 else
     echo "[-] Enter the correct parameters"
 fi

@@ -21,7 +21,7 @@ minikube stop
 if ! minikube status &> /dev/null
 then 
     echo "[+] Starting Minikube with 1 nodes, $1 cpus $2 MB of memory each"
-    minikube start --nodes 1 --cpus "$1" --memory "$2"
+    minikube start --nodes 2 --cpus "$1" --memory "$2"
 else
     echo "[+] Minikube is already runing"
 fi
