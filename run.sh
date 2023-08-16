@@ -18,17 +18,18 @@ function files_in_test() {
 
 function apply_experience() {
     duration=$1
-    
-    echo "[+] Starting the experience with attacks"
-    python3 src/launch.py --duration $1
-    echo "[+] Experience ended with attacks"
+    filename=$2
 
     echo "[+] Starting the experience with attacks"
-    python3 src/launch.py --duration $1 --no-attacks
+    python3 src/launch.py --duration $duration --experiment $filename
     echo "[+] Experience ended with attacks"
+
+    echo "[+] Starting the experience without attacks"
+    python3 src/launch.py --duration $duration --experiment $filename --no-attacks 
+    echo "[+] Experience ended without attacks"
 
     echo "[+] Showing figures"
-    python3 src/figures.py
+    python3 src/figures.py --experiment $filename
 }
 
 function adjust_nodes() {
@@ -73,7 +74,7 @@ then
 
     echo "[+] Finished"
     
-    #apply_experience $1
+    apply_experience $1 
 
 elif [ $# == 2 ]
 then
@@ -93,7 +94,7 @@ then
 
     echo "[+] Finished"
 
-    #apply_experience $2
+    apply_experience $2 $1
 else
     echo "[-] Enter the correct parameters"
 fi

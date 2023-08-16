@@ -2,7 +2,7 @@ import argparse
 import threading, os
 import utils
 
-def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
+def launch_experiment(duration: int, NoAttacks: bool, experiment: str, namespace='default'):
     '''
     launch Experiment
 
@@ -23,7 +23,7 @@ def launch_experiment(duration: int, NoAttacks: bool, namespace='default'):
             thread = threading.Thread(
                 target = utils.run_victims_apps,
                 args = (duration,
-                        pod_name, NoAttacks))
+                        pod_name, NoAttacks, experiment))
             threads.append(thread)
 
         if (utils.check_pod_name(pod_name, 'attacker') and NoAttacks == False):
@@ -46,10 +46,12 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description=' Launch Experiment.')
     parser.add_argument("--duration", type=int, help="Expirement duration in minutes", required=True)
+    parser.add_argument("--experiment", help="Experiment", required=True)
     parser.add_argument("--no-attacks", action="store_true", help="No attack will be launched")
+
 
     path = "stats"
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
     args = parser.parse_args()
-    launch_experiment(args.duration, args.no_attacks)
+    launch_experiment(args.duration, args.no_attacks, args.experiment)

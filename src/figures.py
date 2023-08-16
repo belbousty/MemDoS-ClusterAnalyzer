@@ -1,10 +1,9 @@
 import utils
 import matplotlib.pyplot as plt
-import re, os
+import os, argparse
 
 
-
-def get_stats_load(file: str, stat: str):
+def get_stats_load(file: str, stat: str, experiment: str):
     '''
     Plot statistics for a specific victim
     
@@ -22,9 +21,9 @@ def get_stats_load(file: str, stat: str):
     labels = ['with running attacks', 'without any attacks']
     markers = ['s', 'o']
     for f, color, label, marker in zip(files,colors,labels, markers):
-        stats = utils.extract(stat, f)
+        stats = utils.extract(stat, f, experiment)
         stats.insert(0,0)
-        time = utils.extract('time', f)
+        time = utils.extract('time', f, experiment)
         time.insert(0,0)
         ctime = utils.cumulative_time(time)
         ax.plot(ctime, stats,marker=marker, color=color, label=label)
@@ -43,11 +42,11 @@ def get_stats_load(file: str, stat: str):
     plt.legend()
     plt.savefig(f"figures/{file}-{stat}.png")
 
-def pies(file):
+def pies(file, experiment):
     plt.figure()
     stats =['LLC','LLC-misses']
-    llc = utils.extract(stats[0], file)
-    llc_misses = utils.extract(stats[1], file)
+    llc = utils.extract(stats[0], file, experiment)
+    llc_misses = utils.extract(stats[1], file, experiment)
     llc_m = sum(llc)/len(llc)
     llc_misses_m = sum(llc_misses)/len(llc_misses)
     stats = [llc_m, llc_misses_m]
@@ -57,25 +56,28 @@ def pies(file):
     plt.pie(stats, explode=explode, labels=labels, colors=colors,
         autopct='%1.1f%%', shadow=True, startangle=140)
     plt.title(f'LLC stats for {file}')
-    plt.savefig(f"figures/{file}.png")
+    plt.savefig(f"figures/{experiment}/{file}.png")
 
 
 
 
-def main():
-    path = "figures"
+def main(experiment):
+    path = f"figures/{experiment}"
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
     pods = utils.get_pod_names()
     for pod in pods:
         if (utils.check_pod_name(pod, 'victim')):
-            utils.save_csv_stats(pod)
-            get_stats_load(pod, 'time')
-            get_stats_load(pod, 'LLC-misses')
-            get_stats_load(pod, 'LLC')
-            pies(pod)
-            pies(pod+'-no-attacks')
+            utils.save_csv_stats(pod, experiment)
+            get_stats_load(pod, 'time', experiment)
+            get_stats_load(pod, 'LLC-misses', experiment)
+            get_stats_load(pod, 'LLC', experiment)
+            pies(pod, experiment)
+            pies(pod+'-no-attacks', experiment)
 
 if __name__ == '__main__' :
-    main()
+    parser = argparse.ArgumentParser(description=' Launch Experiment.')
+    parser.add_argument("--experiment", help="Experiment", default="structure")
+    args = parser.parse_args()
+    main(args.experiment)
     pass

@@ -1,15 +1,16 @@
 {
+    "title" : "2llc/2kmeans",
     "nodes" : "2",
     "attackers": [ 
         {
             "node": "1",
             "attackType": "llc",
-            "duration": "5",
+            "duration": "1",
             "start": "0"
         },{
             "node": "2",
             "attackType": "llc",
-            "duration": "5",
+            "duration": "1",
             "start": "0"
         }],
 

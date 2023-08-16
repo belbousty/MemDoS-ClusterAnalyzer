@@ -319,7 +319,7 @@ def run_perf_command(output_file, pod_name, workload, benchmark):
     output_file.write("\n")
     output_file.write("----------------\n")
 
-def run_victims_apps(duration, pod_name, NoAttack, purpose='experiment'):
+def run_victims_apps(duration, pod_name, NoAttack, experiment, purpose='experiment'):
     '''
     launch victims apps repeatedly 
 
@@ -338,11 +338,11 @@ def run_victims_apps(duration, pod_name, NoAttack, purpose='experiment'):
     if (NoAttack == True):
         filename += "-no-attacks"
     
-    path = "stats/txt"
+    path = f"stats/txt/{experiment}"
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
 
-    with open(f"stats/txt/{filename}.txt", "w") as output_file:
+    with open(f"stats/txt/{experiment}/{filename}.txt", "w") as output_file:
         if purpose == 'experiment':
             start_time = time.time()
             while (time.time() - start_time) < (duration * 60):
@@ -394,7 +394,7 @@ def prepare_victims_benchmarks(pod_name: str):
 
     subprocess.run(shlex.split(f"kubectl exec -it {pod_name} -- '/HiBench/bin/workloads/{workload}/{benchmark}/prepare/prepare.sh'"), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-def extract(stat :str, victim: str):
+def extract(stat :str, victim: str, experiment: str):
     '''
     Extract values of statistic properties
 
@@ -405,7 +405,7 @@ def extract(stat :str, victim: str):
     Returns:
     statistic property values during the experience
     '''
-    with open(f"stats/txt/{victim}.txt", "r") as f:
+    with open(f"stats/txt/{experiment}/{victim}.txt", "r") as f:
         lines = f.readlines()
     if (stat == 'time'):
         pattern = r"(\d+\.\d+) seconds time elapsed"
@@ -421,19 +421,21 @@ def extract(stat :str, victim: str):
     return stats
 
 
-def save_csv_stats(file:str):
+def save_csv_stats(file:str, experiment: str):
+    if not os.path.exists(f"stats/csv/{experiment}"):
+        os.makedirs(f"stats/csv/{experiment}", exist_ok=True)
     labels = ['LLC-hits', 'LLC-misses', 'time']
     files = [file, file+'-no-attacks']
     for f in files:
-        llc = extract('LLC', f)
-        llc_misses = extract('LLC-misses', f) 
-        time = extract('time', f)
+        llc = extract('LLC', f, experiment)
+        llc_misses = extract('LLC-misses', f, experiment) 
+        time = extract('time', f, experiment)
         stats = [llc, llc_misses, time]
         data = {'Labels': labels, 'Stats': stats}
         df = pd.DataFrame(data)
-        csv_filename = f'stats/csv/{f}.csv'
+        csv_filename = f'stats/csv/{experiment}/{f}.csv'
         df.to_csv(csv_filename, index=False)
 
 
 if __name__ == '__main__':
-    print(get_experiment_info('attack'))
+    get_experiment_info('attack')

@@ -1,0 +1,7 @@
+ml/kmeans
+micro/terasort
+websearch/pagerank
+micro/dfsioe
+micro/sleep
+micro/sort
+micro/wordcount
