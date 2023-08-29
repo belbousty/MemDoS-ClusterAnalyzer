@@ -6,6 +6,7 @@ metadata:
   annotations:
     workload: "workload"
     benchmark: "benchmark"
+    rdtclass.cri-resource-manager.intel.com/pod: Guarenteed
 spec:
   nodeName: nodeName
   containers:

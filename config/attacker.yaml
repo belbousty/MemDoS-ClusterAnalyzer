@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: podName
-  namespace: default
+  namespace: default 
   annotations:
     attackType: "attack"
     duration: xDration # duration of the attack
     start: xStart # start at the x minute of the experiment
+    rdtclass.cri-resource-manager.intel.com/pod: Test
 spec:
   nodeName: nodeName
   containers:

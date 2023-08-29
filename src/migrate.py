@@ -1,5 +1,5 @@
 import sys, threading, argparse
-import json, time
+import json, time, re
 import csv
 import utils
 
@@ -127,8 +127,11 @@ def victim_thread(duration, pod, namespace='default'):
     while (time.time() - start_time) < (duration * 60):
         utils.run_victims_apps(duration, pod, False, 'Migration')
         if (check_app_execution_time(pod)):
-
-            migrate_to(pod, pod+"-m",choose_destination(pod, namespace), namespace)
+            if re.search(r"-m$", pod):
+                new_pod = re.sub(r"-m$", "", pod)
+                migrate_to(pod, new_pod,choose_destination(pod, namespace), namespace)
+            else:
+                migrate_to(pod, pod+"-m",choose_destination(pod, namespace), namespace)
             prepared_pods.remove(pod)
             print('Migrate due to execution time!')
             return True

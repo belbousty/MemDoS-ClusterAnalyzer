@@ -1,9 +1,9 @@
 #!/bin/bash
 
 re='^[0-9]+$'
-if [ $#  -ne  2 ]
+if [ $#  -ne  3 ]
 then
-    echo -e "[-] Please specify number cpus and the size of the memory for each node\ ./build [NUM_CPUS] [MEMORY]"
+    echo -e "[-] Please specify number cpus and the size of the memory for each node\ ./build [NUM_NODE] [NUM_CPUS] [MEMORY]"
     exit
 fi
 
@@ -20,8 +20,8 @@ minikube stop
 
 if ! minikube status &> /dev/null
 then 
-    echo "[+] Starting Minikube with 1 nodes, $1 cpus $2 MB of memory each"
-    minikube start --nodes 2 --cpus "$1" --memory "$2"
+    echo "[+] Starting Minikube with $1 nodes, $2 cpus $3 MB of memory each"
+    minikube start --nodes $1 --cpus "$2" --memory "$3"
 else
     echo "[+] Minikube is already runing"
 fi

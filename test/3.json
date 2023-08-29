@@ -1,0 +1,19 @@
+{
+    "title" : "3llc/3kmeans",
+    "nodes" : "2",
+    "attackers": [ 
+        {
+            "node": "1",
+            "attackType": "llc",
+            "duration": "5",
+            "start": "0"
+        }
+    ],
+    "victims": [
+        {
+        "node": "1",
+        "workload": "ml",
+        "benchmark": "kmeans"
+        }
+    ]
+}
