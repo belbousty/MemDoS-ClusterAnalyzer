@@ -1,4 +1,5 @@
-This repository helps launching a N node cluster with x number of attackers an y number of victims in each node
+This repository helps launching a N node cluster with x number of attackers an y number of victims in each node, extracting statistics on LLC usage and applications' execution time and producing graphs in order to compare results of a "Live Attack" and "Non-Attack" Simulation
+
 # Specify pods in structure.json
 ```console
 # You should specify exactly the values required in structure.json
