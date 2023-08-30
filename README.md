@@ -46,7 +46,15 @@ To run it with Minikube:
 # Example : creating 1 node cluster with 3 cpus and 20000MB each
     ./build.sh 3 20000
 # Run the experiment
-    ./run.sh [Duratioon]
+    ./run.sh [DURATION] minikube
+# make sure the duration is superior than the maximum attack duration
+```
+To run it using KinD:
+```console
+# Build the cluster
+    ./build.sh  [NODE_NUM_CPUS]
+# Run the experiment using structure.json for pods creation
+    ./run.sh [DURATION] kind
 # make sure the duration is superior than the maximum attack duration
 ```
 
