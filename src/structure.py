@@ -16,10 +16,16 @@ def get_pod_name(cursor, role, node):
     
 
 def get_node_name(node_number):
-    node_name = "minikube"
+    if tool == "kind":
+        node_name = "cri-rm-cluster-worker"
+    else:
+        node_name = "minikube"
     if (node_number == '1'):
         return node_name
-    return node_name + f"-m0{node_number}"
+    if tool == "kind":
+        return node_name + node_number
+    else:
+        return node_name + f"-m0{node_number}"
 
 def change_values(yaml_data ,pod, role, cursor):
     yaml_data['spec']['nodeName'] = get_node_name(pod['node'])
@@ -80,6 +86,9 @@ def get_full_json(file):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--json", help="json file path", default= 'structure.json')
+    parser.add_argument('--tool', help="tool used", default= 'minikube')
     args = parser.parse_args()
+
+    tool = args.tool
 
     get_full_json(args.json)

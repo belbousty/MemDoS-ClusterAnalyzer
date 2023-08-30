@@ -40,7 +40,7 @@ def get_stats_load(file: str, stat: str, experiment: str):
         plt.ylabel("LLC misses")
     plt.xlabel("Experience time (s)")
     plt.legend()
-    plt.savefig(f"figures/{file}-{stat}.png")
+    plt.savefig(f"figures/{experiment}/{file}-{stat}.png")
 
 def pies(file, experiment):
     plt.figure()
