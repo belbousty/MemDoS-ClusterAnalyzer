@@ -96,6 +96,8 @@ We provided 3 tests each with different node characteristics and type of attacks
 ## Docker version 20.10.24
 ## minikube version: v1.30.1
 ## Python 3.8.10
+## KinD version: v0.11.0
+## Go: 1.16.4
 # Install python libraries
     pip install json
     pip install pyyaml
