@@ -12,16 +12,16 @@ do
     if [ $necessary_nodes != $node_num ]
     then 
         echo "[-] Inappropriate number of nodes."
-        adjust_nodes $necessary_nodes $node_num
+        exit
     fi
 
     echo "[+] Launching test"
     echo "[+] Creating Pods from test/$test.json"
 
-    python3 src/structure.py --json test/$test.json
+    duration=$1
+    python3 src/structure.py --json test/$test.json --tool $2
     kubectl apply -f config/config.yaml
-    #apply_experience $2 $1
+    apply_experience $duration $test
 
     echo "[+] Finished"
-    exit
 done 

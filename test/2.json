@@ -1,16 +1,26 @@
-{   
-    "title" : "llc/kmeans/1node",
-    "nodes" : "1",
+{
+    "title" : "2llc/2kmeans",
+    "nodes" : "2",
     "attackers": [ 
         {
             "node": "1",
-            "attackType": "llc",
-            "duration": "5",
+            "attackType": "lock",
+            "duration": "15",
+            "start": "0"
+        },{
+            "node": "2",
+            "attackType": "lock",
+            "duration": "15",
             "start": "0"
         }],
 
-    "victims": [{
+    "victims": [
+        {
             "node": "1",
+            "workload": "ml",
+            "benchmark": "kmeans"
+        },{
+            "node": "2",
             "workload": "ml",
             "benchmark": "kmeans"
         }]

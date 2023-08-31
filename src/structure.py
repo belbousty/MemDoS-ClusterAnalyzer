@@ -4,30 +4,67 @@ import utils
 import sys
 import argparse
 
-def num_node(file):
+def num_node(file: str):
+    '''
+    Get the number of nodes 
+
+    Parameters:
+    file (str): the json filename 
+
+    Returns:
+    number of nodes 
+    '''
     with open(file, 'r') as json_file:
         data = json.load(json_file)
     num = int(data['nodes'])
     return num
 
 
-def get_pod_name(cursor, role, node):
+def get_pod_name(cursor: dict, role: str, node: str):
+    '''
+    Get pod's name
+
+    Parameters:
+    cursor (dict): the dictionnary that contains the number of existing pods in each role   
+    role (str): the role of the pod
+    node (str): the number of the node
+
+    Returns:
+    number of nodes 
+    '''
     return role + node + f'{cursor[node][role]}'
     
 
-def get_node_name(node_number):
+def get_node_name(node_number: str):
+    '''
+    Build the correct node name
+
+    Parameters:
+    node_number (str): the number of the node as a string
+
+    Returns:
+    the correct name for the node
+    '''
     if tool == "kind":
         node_name = "cri-rm-cluster-worker"
     else:
-        node_name = "minikube"
-    if (node_number == '1'):
-        return node_name
+        node_name = "minikube-m0"
     if tool == "kind":
         return node_name + node_number
     else:
-        return node_name + f"-m0{node_number}"
+        return node_name + str(int(node_number) + 1)
+
 
 def change_values(yaml_data ,pod, role, cursor):
+    '''
+    Build the correct node name
+
+    Parameters:
+    node_number (str): the number of the node as a string
+
+    Returns:
+    the correct name for the node
+    '''
     yaml_data['spec']['nodeName'] = get_node_name(pod['node'])
     yaml_data['metadata']['name'] = get_pod_name(cursor, role, pod['node'])
 

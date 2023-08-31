@@ -52,11 +52,11 @@ fi
 
 if [[ $tool == 'minikube' ]]
 then
-    minikube stop
+    minikube delete
     if ! minikube status &> /dev/null
     then 
         echo "[+] Starting Minikube with $1 nodes, $2 cpus $3 MB of memory each"
-        minikube start --nodes $1 --cpus "$2" --memory "$3"
+        minikube start --nodes $(($1+1)) --cpus "$2" --memory "$3"
     else
         echo "[+] Minikube is already runing"
     fi

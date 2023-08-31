@@ -5,12 +5,12 @@
         {
             "node": "1",
             "attackType": "llc",
-            "duration": "5",
+            "duration": "15",
             "start": "0"
         },{
             "node": "2",
             "attackType": "llc",
-            "duration": "5",
+            "duration": "15",
             "start": "0"
         }],
 

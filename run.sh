@@ -19,18 +19,20 @@ then
 
     echo "[+] Finished"
     
-    #apply_experience $1 structure
+    apply_experience $1 structure
 
 elif [ $# == 3 ]
 then
+    filename=$1
+    duration=$2
     necessary_nodes=$(jq -r ".nodes" test/$1.json)
-    node_num=$(count_minikube_nodes)
-    if [ $necessary_nodes != $node_num ]
-    then 
-        echo "[-] Inappropriate number of nodes."
-        echo "[-] Please rebuild with the appropriate number"
-        exit
-    fi
+    # node_num=$(count_minikube_nodes)
+    # if [ $necessary_nodes != $node_num ]
+    # then 
+    #     echo "[-] Inappropriate number of nodes."
+    #     echo "[-] Please rebuild with the appropriate number"
+    #     exit
+    # fi
 
     echo "[+] Launching test"
     echo "[+] Creating Pods from test/$1.json"
@@ -39,8 +41,7 @@ then
     kubectl apply -f config/config.yaml
 
     echo "[+] Finished"
-
-    #apply_experience $2 $1
+    apply_experience $duration $filename
 else
     echo "[-] Enter the correct parameters"
 fi
