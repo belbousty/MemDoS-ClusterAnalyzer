@@ -47,7 +47,9 @@ To run it with Minikube:
     ./build.sh 3 20000
 # Run the experiment
     ./run.sh [DURATION] minikube
-# make sure the duration is superior than the maximum attack duration
+    ./run.sh [FILENAME] [DURATION] minikube , the file should be without extension and stored in 'test' directory
+# Running all test
+    ./run_all.sh [DURATION] minikube
 ```
 To run it using KinD:
 ```console
@@ -55,6 +57,9 @@ To run it using KinD:
     ./build.sh  [NODE_NUM_CPUS]
 # Run the experiment using structure.json for pods creation
     ./run.sh [DURATION] kind
+    ./run.sh [FILENAME] [DURATION] kind , the file should be without extension and stored in 'test' directory
+# Running all test
+    ./run_all.sh [DURATION] kind
 # make sure the duration is superior than the maximum attack duration
 ```
 
@@ -80,7 +85,7 @@ We provided 3 tests each with different node characteristics and type of attacks
 # Start the experiment 
 ```console
 # launching experiment
-    python3 src/launch.py  --duration [DURATION]
+    python3 src/launch.py  --duration [DURATION] --experiment [FILENAME], the file should be without extension and stored in 'test' directory
 
 # launching experiment without any attacks (without changing the json file)
     python3 src/launch.py  --duration [DURATION] --no-attacks
@@ -96,13 +101,13 @@ We provided 3 tests each with different node characteristics and type of attacks
     pip install pyyaml
     pip install matplotlib
     pip install pandas
-    
 # Installing perf
     sudo apt install linux-tools
+    sudo apt install jq
 ```
 # Fixed issues
 Allowing perf stat capability:
 ```console
-# On the local machine as root
+# On the local machine as root (mandatory for perf)
     echo -1 > /proc/sys/kernel/perf_event_paranoid
 ```
