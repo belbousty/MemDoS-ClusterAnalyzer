@@ -42,9 +42,9 @@ This repository helps launching a N node cluster with x number of attackers an y
 To run it with Minikube:
 ```console
 # Build the cluster
-    ./build.sh  [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
-# Example : creating 1 node cluster with 3 cpus and 20000MB each
-    ./build.sh 3 20000
+    ./build.sh [NUM_NODES] [NODE_NUM_CPUS] [NODE_MEMORY_SIZE]
+# Example : creating 2 node cluster with 3 cpus and 20000MB each
+    ./build.sh 2 3 20000
 # Run the experiment
     ./run.sh [DURATION] minikube
     ./run.sh [FILENAME] [DURATION] minikube , the file should be without extension and stored in 'test' directory
@@ -54,7 +54,7 @@ To run it with Minikube:
 To run it using KinD:
 ```console
 # Build the cluster
-    ./build.sh  [NODE_NUM_CPUS]
+    ./build.sh  [NUM_NODES]
 # Run the experiment using structure.json for pods creation
     ./run.sh [DURATION] kind
     ./run.sh [FILENAME] [DURATION] kind , the file should be without extension and stored in 'test' directory
