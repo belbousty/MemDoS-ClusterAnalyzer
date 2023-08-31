@@ -2,6 +2,13 @@
 
 source ./functions.sh
 
+if [ $#  -ne  2 ] && [ $# -ne 3 ] 
+then
+    echo -e "[-] To use structure.json, ./run.sh [FILE] [DURATION] [TOOL]"
+    echo -e "[-] To use test json files, ./run [DURATION] [TOOL], tool is either 'minikube' or 'kind' "
+    exit
+fi
+
 if [ $# == 2 ]
 then
     necessary_nodes=$(jq -r ".nodes" structure.json)
@@ -26,13 +33,13 @@ then
     filename=$1
     duration=$2
     necessary_nodes=$(jq -r ".nodes" test/$1.json)
-    # node_num=$(count_minikube_nodes)
-    # if [ $necessary_nodes != $node_num ]
-    # then 
-    #     echo "[-] Inappropriate number of nodes."
-    #     echo "[-] Please rebuild with the appropriate number"
-    #     exit
-    # fi
+    node_num=$(count_minikube_nodes)
+    if [ $necessary_nodes != $node_num ]
+    then 
+        echo "[-] Inappropriate number of nodes."
+        echo "[-] Please rebuild with the appropriate number"
+        exit
+    fi
 
     echo "[+] Launching test"
     echo "[+] Creating Pods from test/$1.json"

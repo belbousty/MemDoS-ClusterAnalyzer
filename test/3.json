@@ -1,6 +1,6 @@
 {
     "title" : "2llc/2kmeans",
-    "nodes" : "2",
+    "nodes" : "1",
     "attackers": [ 
         {
             "node": "1",

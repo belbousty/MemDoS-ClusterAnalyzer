@@ -2,6 +2,11 @@
 
 source ./functions.sh
 
+if [ $#  -ne  2 ] 
+then
+    echo -e "[-] To use structure.json, ./run_all.sh [DURATION] [TOOL], tool is either 'minikube' or 'kind'"
+    exit
+fi
 
 test_files=$(ls -1 test | cut -d '.' -f1)
 for test in $test_files

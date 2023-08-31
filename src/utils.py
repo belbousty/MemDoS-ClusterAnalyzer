@@ -435,7 +435,3 @@ def save_csv_stats(file:str, experiment: str):
         df = pd.DataFrame(data)
         csv_filename = f'stats/csv/{experiment}/{f}.csv'
         df.to_csv(csv_filename, index=False)
-
-
-if __name__ == '__main__':
-    get_experiment_info('attack')

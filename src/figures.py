@@ -43,6 +43,9 @@ def get_stats_load(file: str, stat: str, experiment: str):
     plt.savefig(f"figures/{experiment}/{file}-{stat}.png")
 
 def pies(file, experiment):
+    '''
+    Plot pie figures to show percentages of the LLC hits and misses.
+    '''
     plt.figure()
     stats =['LLC','LLC-misses']
     llc = utils.extract(stats[0], file, experiment)
@@ -61,7 +64,16 @@ def pies(file, experiment):
 
 
 
-def main(experiment):
+def main(experiment: str):
+    '''
+    Generate the experiment's figures
+    
+    Parameters: 
+    experiment (str): experiment's filename without the extension
+
+    Returns: 
+    None
+    '''
     path = f"figures/{experiment}"
     if not os.path.exists(path):
         os.makedirs(path, exist_ok=True)
@@ -73,11 +85,10 @@ def main(experiment):
             get_stats_load(pod, 'LLC-misses', experiment)
             get_stats_load(pod, 'LLC', experiment)
             pies(pod, experiment)
-            pies(pod+'-no-attacks', experiment)
+            pies(pod + '-no-attacks', experiment)
 
 if __name__ == '__main__' :
     parser = argparse.ArgumentParser(description=' Launch Experiment.')
     parser.add_argument("--experiment", help="Experiment", default="structure")
     args = parser.parse_args()
     main(args.experiment)
-    pass
