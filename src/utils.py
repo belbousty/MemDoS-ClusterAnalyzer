@@ -422,6 +422,8 @@ def extract(stat :str, victim: str, experiment: str):
 
 
 def save_csv_stats(file:str, experiment: str):
+    if not os.path.exists(f"stats/csv/"):
+        os.makedirs(f"stats/csv/", exist_ok=True)
     if not os.path.exists(f"stats/csv/{experiment}"):
         os.makedirs(f"stats/csv/{experiment}", exist_ok=True)
     labels = ['LLC-hits', 'LLC-misses', 'time']
